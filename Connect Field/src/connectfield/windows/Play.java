@@ -5,15 +5,15 @@ import org.newdawn.slick.state.*;
 import org.newdawn.slick.tiled.TiledMap;
 
 public class Play extends BasicGameState {
-	TiledMap map_ice;
+	private TiledMap map_ice;
+	private String tilein;
 	private Animation sprite_p, ani_p_up, ani_p_down, ani_p_left, ani_p_right;
 	private int x_p = 0, y_p = 0;
 	 /** The collision map indicating which tiles block movement - generated based on tile properties */
     private boolean[][] blocked;
      
-	public Play() {
-		
-		
+	public Play(String tile) {
+		this.tilein = tile;
 	}
 
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -22,8 +22,7 @@ public class Play extends BasicGameState {
         Image [] movementLeft = {new Image("data/sprite/KA_Ball.png"), new Image("data/sprite/KA_Ball.png")};
         Image [] movementRight = {new Image("data/sprite/KA_Ball.png"), new Image("data/sprite/KA_Ball.png")};
         int [] duration = {300, 300};
-        map_ice = new TiledMap("data/tilemap/test2.tmx");
-        System.out.println(map_ice.getHeight());
+        map_ice = new TiledMap(tilein);
          /*
          * false variable means do not auto update the animation.
          * By setting it to false animation will update only when
@@ -51,34 +50,55 @@ public class Play extends BasicGameState {
         if (input.isKeyPressed(Input.KEY_UP))
         {
         	sprite_p = ani_p_up;
-        	map_ice.setTileId(x_p/60, y_p/60, 0, 2);
         	y_p -= 60;
+        	changetileid();
         	
         }
         else if (input.isKeyPressed(Input.KEY_DOWN))
         {
         	sprite_p = ani_p_down;
-        	map_ice.setTileId(x_p/60, y_p/60, 0, 2);
         	y_p += 60;
+        	changetileid();
+        	
         	
         }
         else if (input.isKeyPressed(Input.KEY_LEFT))
         {
         	sprite_p = ani_p_left;
-        	map_ice.setTileId(x_p/60, y_p/60, 0, 2);
         	x_p -= 60;
+        	changetileid();
+        	
         	
         }
         else if (input.isKeyPressed(Input.KEY_RIGHT))
         {
         	sprite_p = ani_p_right;
-        	map_ice.setTileId(x_p/60, y_p/60, 0, 2);
         	x_p += 60;
+        	changetileid();
+        	
         	
         }
+	}
+
+	
+	private void changetileid() {
+		if(map_ice.getTileId(x_p/60, y_p/60, 0) == 2){
+    		map_ice.setTileId(x_p/60, y_p/60, 0, 13);
+    	}
+    	else{
+    		map_ice.setTileId(x_p/60, y_p/60, 0, 2);
+    	}
 	}
 
 	public int getID() {
 		return 0;
 	}
+	
+	private void pl(String inp){
+		System.out.println(inp);
+	}
+	private void pl(int inp) {
+		System.out.println(inp);
+	}
+
 }

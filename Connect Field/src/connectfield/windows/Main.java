@@ -12,7 +12,7 @@ public class Main extends StateBasedGame{
    
    public Main(String gamename){
       super(gamename);
-      this.addState(new Play());
+      this.addState(new Play("data/tilemap/test2.tmx"));
    }
    
    public void initStatesList(GameContainer gc) throws SlickException{
