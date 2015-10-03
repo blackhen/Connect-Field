@@ -7,7 +7,7 @@ import org.newdawn.slick.tiled.TiledMap;
 public class Play extends BasicGameState {
 	TiledMap map_ice;
 	private Animation sprite_p, ani_p_up, ani_p_down, ani_p_left, ani_p_right;
-	private float x = 0f, y = 0f;
+	private float x_p = 0f, y_p = 0f;
 	 /** The collision map indicating which tiles block movement - generated based on tile properties */
     private boolean[][] blocked;
      
@@ -43,26 +43,31 @@ public class Play extends BasicGameState {
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		map_ice.render(0, 0);
-        sprite_p.draw((int)x, (int)y, 34f, 34f);
+        sprite_p.draw((int)x_p, (int)y_p, 32f, 32f);
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		Input input = gc.getInput();
-        if (input.isKeyDown(Input.KEY_UP))
+        if (input.isKeyPressed(Input.KEY_UP))
         {
-            
+        	sprite_p = ani_p_up;
+        	y_p -= 32;
+        	map_ice.setTileId(2, 2, 0, 2);
         }
-        else if (input.isKeyDown(Input.KEY_DOWN))
+        else if (input.isKeyPressed(Input.KEY_DOWN))
         {
-            
+        	sprite_p = ani_p_down;
+        	y_p += 32;
         }
-        else if (input.isKeyDown(Input.KEY_LEFT))
+        else if (input.isKeyPressed(Input.KEY_LEFT))
         {
-            
+        	sprite_p = ani_p_left;
+        	x_p -= 32;
         }
-        else if (input.isKeyDown(Input.KEY_RIGHT))
+        else if (input.isKeyPressed(Input.KEY_RIGHT))
         {
-            
+        	sprite_p = ani_p_right;
+        	x_p += 32;
         }
 	}
 
