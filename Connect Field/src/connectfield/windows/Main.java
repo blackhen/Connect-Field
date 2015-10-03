@@ -7,8 +7,8 @@ public class Main extends StateBasedGame{
    
    public static final String gamename = "Connect Field";
    public static final int play = 0;
-   public static final int xSize = 640;
-   public static final int ySize = 480;
+   public static final int xSize = 1280;
+   public static final int ySize = 720;
    
    public Main(String gamename){
       super(gamename);
