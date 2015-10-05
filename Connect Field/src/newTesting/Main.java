@@ -7,17 +7,16 @@ import org.newdawn.slick.tiled.TiledMap;
 public class Main extends StateBasedGame {
 	
 	public final static String title = "Connect Field";
-	public static final int playLevel1 = 0;
+	private static final int play = 1;
 	
 	public Main(String title) {
 		super(title);
-		this.addState(new EasyMode(playLevel1));
-		
+		this.addState(new Play("Easy.tmx", 1));
 	}
 	
 	public void initStatesList(GameContainer gc) throws SlickException {
-		this.getState(playLevel1).init(gc, this);
-		this.enterState(playLevel1);
+		this.getState(play).init(gc,  this);
+		this.enterState(play);
 		
 	}
 	
