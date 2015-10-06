@@ -26,7 +26,6 @@ public class Play extends BasicGameState {
 	private String prevKey = "";
 	private String currentKey = "";
 	private String path = "data/tilemap/";
-	private String test = "";
 	
 	Stack<String> keyList = new Stack<String>();
 	Stack<String> allKeyList = new Stack<String>();
