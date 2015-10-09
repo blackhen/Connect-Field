@@ -1,4 +1,4 @@
-package newTesting;
+package AnimationTesting;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
@@ -7,19 +7,18 @@ import org.newdawn.slick.tiled.TiledMap;
 public class Main extends StateBasedGame {
 	
 	public final static String title = "Connect Field";
-	private static final int play = 1;
+	private static final int play = 0;
 	private static final int newPlay = 2;
 	
 	public Main(String title) {
 		super(title);
-		this.addState(new Play("Hard.tmx", 1));
-		this.addState(new newPlay("Normal.tmx", 1));
+		this.addState(new Play());
 	}
 	
 	public void initStatesList(GameContainer gc) throws SlickException {
 		this.getState(play).init(gc,  this);
-		this.getState(newPlay).init(gc,  this);
-		this.enterState(play);
+		//this.getState(newPlay).init(gc,  this);
+		this.enterState(0);
 	}
 	
 	public static void main(String[] args) {
