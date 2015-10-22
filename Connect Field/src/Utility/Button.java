@@ -1,4 +1,4 @@
-package AnimationTesting;
+package Utility;
 
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Image;

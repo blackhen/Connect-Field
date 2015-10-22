@@ -111,9 +111,8 @@ public class Play extends BasicGameState {
 					boolBoard.push("false");
 				}
 				else {
-					board[tileX][tileY] = false;
-					keyList.push("up");
-					boolBoard.push("false");
+					posY += blockHeight;
+					allKeyList.pop();
 				}
 			}
 			else {
@@ -121,6 +120,7 @@ public class Play extends BasicGameState {
 				keyList.push("up");
 				turnBack = false;
 				boolBoard.push("true");
+				
 			}
 		}
 		
@@ -156,9 +156,8 @@ public class Play extends BasicGameState {
 					boolBoard.push("false");
 				}
 				else {
-					board[tileX][tileY] = false;
-					keyList.push("down");
-					boolBoard.push("false");
+					posY -= blockHeight;
+					allKeyList.pop();
 				}
 			}
 			else {
@@ -201,9 +200,8 @@ public class Play extends BasicGameState {
 					boolBoard.push("false");
 				}
 				else {
-					board[tileX][tileY] = false;
-					keyList.push("left");
-					boolBoard.push("false");
+					posX += blockWidth;
+					allKeyList.pop();
 				}
 			}
 			else {
@@ -246,9 +244,8 @@ public class Play extends BasicGameState {
 					boolBoard.push("false");
 				}
 				else {
-					board[tileX][tileY] = false;
-					keyList.push("right");
-					boolBoard.push("false");
+					posX -= blockWidth;
+					allKeyList.pop();
 				}
 			}
 			else {
@@ -308,15 +305,9 @@ public class Play extends BasicGameState {
 						id += 16;
 					}
 				}
-				//System.out.print(board[column][row] + " ");
 				blockMap.setTileId(column, row, level, id);
 			}
-			//System.out.println();
 		}
-		//if(!keyList.isEmpty())
-		//	test = keyList.peek();
-		//System.out.println("previous key is: " + prevKey + ", current key is: " + currentKey + ", stack is: " + test);
-		//System.out.println(allKeyList);
 	}
 
 	@Override
