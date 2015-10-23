@@ -64,7 +64,9 @@ public class Play extends BasicGameState {
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		for(int row = 0; row < blockRow; row++) {
 			for(int col = 0; col < blockColumn; col++) {
-				blockBoard[col][row].draw(col * blockWidth, row * blockHeight, blockWidth, blockHeight);
+				if(map.getTileProperty(map.getTileId(col, row, stage), "blocked", "false").equals("false")) {
+					blockBoard[col][row].draw(col * blockWidth, row * blockHeight, blockWidth, blockHeight);
+				}
 			}
 		}
 		map.render(0, 0, stage);
@@ -104,7 +106,7 @@ public class Play extends BasicGameState {
 				posX += blockWidth;
 				if(posX > (blockWidth * (blockColumn - 1))) posX = (blockWidth * (blockColumn - 1));
 			}
-			if(input.isKeyPressed(Input.KEY_ENTER)) {
+			if(input.isKeyPressed(Input.KEY_ENTER) && !boardState[tileX][tileY]) {
 				boardState[tileX][tileY] = true;
 				blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
 				start = true;

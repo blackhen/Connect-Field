@@ -801,9 +801,14 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Level1" width="10" height="10">
+ <layer name="Level1" width="10" height="10" visible="0">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC4WQoQrDQBBENzLyREVlKRGRpVRUng6lIoSIyn7GNf+eGZiFoSaBxx1zuzs7mSKiO2AGV1DAV3eeF3ADH73dQQOT+h7gBc7gJG0FP9Wxj99TWvYVmzdIS5/0DdutSSvyqXoLaaH+rOtUU+XBub3la5aXNYv24O6jzWe+Dbwt12i+mcX/0T/VTnrvTp0AMZABAAA=
+  </data>
+ </layer>
+ <layer name="Level2" width="10" height="10">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC/NmYGBgRMOOUBwOxP5AHAzEtUCsCcSGQKwIxIJQNZxQdjIQVyPJJUPZjFD90UjmmUL5MLskgdgSiHWhYjAAsssbykY2Bxkg28UAZcdD3cXAgOkORahd/lD3wPzUDTUb2R8MULWaSPYhh5MpVG001B3oboKZYwh1EyxcBZHCD4TTkewGAHTRMiOQAQAA
   </data>
  </layer>
 </map>
