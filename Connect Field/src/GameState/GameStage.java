@@ -51,6 +51,8 @@ public class GameStage extends BasicGameState {
 			sbg.enterState(Main.play);
 		}
 		else if(input.isKeyPressed(Input.KEY_4)) {
+			Play.setGame(level, 3);
+			sbg.getState(Main.play).init(gc, sbg);
 			sbg.enterState(Main.play);
 		}
 		else if(input.isKeyPressed(Input.KEY_5)) {
