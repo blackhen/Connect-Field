@@ -1,6 +1,7 @@
 package GameState;
 
 import Utility.Block;
+import Utility.Line;
 import java.util.Stack;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
@@ -21,6 +22,7 @@ public class Play extends BasicGameState {
 	private static int stage;
 	
 	private Block[][] blockBoard;
+	private Line[][] lineBoard;
 	private boolean[][] boardState;
 	private boolean start;
 	private Stack<String> keyList;
@@ -45,6 +47,7 @@ public class Play extends BasicGameState {
 		posY = 0;
 		blockBoard = new Block[blockWidth][blockHeight];
 		boardState = new boolean[blockWidth][blockHeight];
+		lineBoard =  new Line[blockWidth][blockHeight];
 		start = false;
 		keyList = new Stack<String>();
 		keys = new Stack<String>();
@@ -62,6 +65,9 @@ public class Play extends BasicGameState {
 					blockBoard[col][row] = new Block(ani);
 					boardState[col][row] = false;
 				}
+				
+				lineBoard[col][row] = new Line(new SpriteSheet("data/sprite/line.png", 160, 120));
+				lineBoard[col][row].setStart(false);
 			}
 		}
 	}
@@ -73,6 +79,7 @@ public class Play extends BasicGameState {
 				if(map.getTileProperty(map.getTileId(col, row, stage), "blocked", "false").equals("false")) {
 					blockBoard[col][row].draw(col * blockWidth, row * blockHeight, blockWidth, blockHeight);
 				}
+				lineBoard[col][row].draw(col * blockWidth, row * blockHeight, blockWidth, blockHeight);
 			}
 		}
 		map.render(0, 0, stage);
@@ -116,6 +123,7 @@ public class Play extends BasicGameState {
 			if(input.isKeyPressed(Input.KEY_ENTER) && !boardState[tileX][tileY]) {
 				boardState[tileX][tileY] = true;
 				blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+				lineBoard[tileX][tileY].setStart(true);
 				start = true;
 			}
 		}
@@ -131,12 +139,16 @@ public class Play extends BasicGameState {
 						boardState[tileX][tileY] = true;
 						keyList.push("up");
 						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+						lineBoard[tileX][tileY].addKey("up");
+						lineBoard[tileX][tileY + 1].addKey("up");
 					}
 					else if(boardState[tileX][tileY]) {
 						if(prevKey.equals("down")) {
 							boardState[tileX][tileY + 1] = false;
 							keyList.pop();
 							blockBoard[tileX][tileY + 1].setState(boardState[tileX][tileY + 1]);
+							lineBoard[tileX][tileY].delKey();
+							lineBoard[tileX][tileY + 1].delKey();
 						}
 						else 
 							posY += blockHeight;
@@ -151,12 +163,16 @@ public class Play extends BasicGameState {
 						boardState[tileX][tileY] = true;
 						keyList.push("down");
 						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+						lineBoard[tileX][tileY].addKey("down");
+						lineBoard[tileX][tileY - 1].addKey("down");
 					}
 					else if(boardState[tileX][tileY]) {
 						if(prevKey.equals("up")) {
 							boardState[tileX][tileY - 1] = false;
 							blockBoard[tileX][tileY - 1].setState(boardState[tileX][tileY - 1]);
 							keyList.pop();
+							lineBoard[tileX][tileY].delKey();
+							lineBoard[tileX][tileY - 1].delKey();
 						}
 						else
 							posY -= blockHeight;
@@ -171,12 +187,16 @@ public class Play extends BasicGameState {
 						boardState[tileX][tileY] = true;
 						keyList.push("left");
 						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+						lineBoard[tileX][tileY].addKey("left");
+						lineBoard[tileX + 1][tileY].addKey("left");
 					}
 					else if(boardState[tileX][tileY]) {
 						if(prevKey.equals("right")) {
 							boardState[tileX + 1][tileY] = false;
 							blockBoard[tileX + 1][tileY].setState(boardState[tileX + 1][tileY]);
 							keyList.pop();
+							lineBoard[tileX][tileY].delKey();
+							lineBoard[tileX + 1][tileY].delKey();
 						}
 						else
 							posX += blockWidth;
@@ -191,12 +211,16 @@ public class Play extends BasicGameState {
 						boardState[tileX][tileY] = true;
 						keyList.push("right");
 						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+						lineBoard[tileX][tileY].addKey("right");
+						lineBoard[tileX - 1][tileY].addKey("right");
 					}
 					else if(boardState[tileX][tileY]) {
 						if(prevKey.equals("left")) {
 							boardState[tileX - 1][tileY] = false;
 							keyList.pop();
 							blockBoard[tileX - 1][tileY].setState(boardState[tileX - 1][tileY]);
+							lineBoard[tileX][tileY].delKey();
+							lineBoard[tileX - 1][tileY].delKey();
 						}
 						else
 							posX -= blockWidth;
@@ -206,29 +230,47 @@ public class Play extends BasicGameState {
 			else if(input.isKeyPressed(Input.KEY_Z)) {
 				if(keyList.isEmpty()) {
 					boardState[tileX][tileY] = false;
+					lineBoard[tileX][tileY].delKey();
+					lineBoard[tileX][tileY].setStart(false);
 					start = false;
+					blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
 				}
 				else if(prevKey.equals("up")) {
 					posY += blockHeight;
 					boardState[tileX][tileY] = false;
+					lineBoard[tileX][tileY].delKey();
+					blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+					tileY = posY / blockHeight;
+					lineBoard[tileX][tileY].delKey();
 					keyList.pop();
 				}
 				else if(prevKey.equals("down")) {
 					posY -= blockHeight;
 					boardState[tileX][tileY] = false;
+					lineBoard[tileX][tileY].delKey();
+					blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+					tileY = posY / blockHeight;
+					lineBoard[tileX][tileY].delKey();
 					keyList.pop();
 				}
 				else if(prevKey.equals("left")) {
 					posX += blockWidth;
 					boardState[tileX][tileY] = false;
+					lineBoard[tileX][tileY].delKey();
+					blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+					tileX = posX / blockWidth;
+					lineBoard[tileX][tileY].delKey();
 					keyList.pop();
 				}
 				else if(prevKey.equals("right")) {
 					posX -= blockWidth;
 					boardState[tileX][tileY] = false;
+					lineBoard[tileX][tileY].delKey();
+					blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+					tileX = posX / blockWidth;
+					lineBoard[tileX][tileY].delKey();
 					keyList.pop();
 				}
-				blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
 			}
 		}
 		//---------------end play----------------//
