@@ -24,9 +24,13 @@ public class Play extends BasicGameState {
 	private boolean[][] boardState;
 	private boolean start;
 	private Stack<String> keyList;
+	private Stack<String> keys;
+	private Stack<String> booleans;
 	
 	private static String path = "data/Stage/Easy.tmx";
 	private String prevKey = "";
+	private String prevAllKey = "";
+	private String bool = "";
 	
 
 	@Override
@@ -43,6 +47,8 @@ public class Play extends BasicGameState {
 		boardState = new boolean[blockWidth][blockHeight];
 		start = false;
 		keyList = new Stack<String>();
+		keys = new Stack<String>();
+		booleans = new Stack<String>();
 		slime = new Animation(new SpriteSheet(new Image("data/sprite/downSlime.png"), 160, 120), 100);
 
 		for(int row = 0; row < blockRow; row++) {
@@ -87,6 +93,7 @@ public class Play extends BasicGameState {
 		boolean right = map.getTileProperty(tileId, "right", "false").equals("false");
 		
 		if(!keyList.isEmpty()) prevKey = keyList.peek();
+		if(!keys.isEmpty()) prevAllKey = keys.peek();
 		
 		//-------select start block--------//
 		if(!start) {
