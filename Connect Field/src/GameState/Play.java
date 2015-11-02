@@ -38,13 +38,13 @@ public class Play extends BasicGameState {
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		map = new TiledMap(path);
-		focus = new Image("data/sprite/KA_Ball.png");
+		focus = new Image("data/sprite/focus.png");
 		blockHeight = map.getTileHeight();
 		blockWidth = map.getTileWidth();
 		blockRow = map.getHeight();
 		blockColumn = map.getWidth();
-		posX = 0;
-		posY = 0;
+		posX = blockColumn / 2 * blockWidth;
+		posY = blockRow / 2 * blockHeight;
 		blockBoard = new Block[blockWidth][blockHeight];
 		boardState = new boolean[blockWidth][blockHeight];
 		lineBoard =  new Line[blockWidth][blockHeight];
@@ -60,8 +60,8 @@ public class Play extends BasicGameState {
 				if(map.getTileProperty(tileID, "blocked", "false").equals("true")) 
 					boardState[col][row] = true;
 				else {
-					Animation[] ani = {new Animation(new SpriteSheet(new Image("data/sprite/sBlueBlock.png"), 160, 120), 50), 
-							new Animation(new SpriteSheet(new Image("data/sprite/BlueBlock.png"), 160, 120), 50)};
+					Animation[] ani = {new Animation(new SpriteSheet(new Image("data/sprite/sBlueBlock.png"), 160, 120), 25), 
+							new Animation(new SpriteSheet(new Image("data/sprite/BlueBlock.png"), 160, 120), 25)};
 					blockBoard[col][row] = new Block(ani);
 					boardState[col][row] = false;
 				}
@@ -83,7 +83,8 @@ public class Play extends BasicGameState {
 			}
 		}
 		map.render(0, 0, stage);
-		slime.draw(posX, posY, blockWidth, blockHeight);
+		if(!start)
+			focus.draw(posX, posY, blockWidth, blockHeight);
 	}
 
 	@Override
