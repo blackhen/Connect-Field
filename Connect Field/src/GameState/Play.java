@@ -1,5 +1,6 @@
 package GameState;
 
+import Utility.Arrow;
 import Utility.Block;
 import Utility.Line;
 import java.util.Stack;
@@ -12,6 +13,7 @@ public class Play extends BasicGameState {
 	private TiledMap map;
 	private Image focus;
 	private Animation slime;
+	private Arrow arrow;
 	
 	private int posX;
 	private int posY;
@@ -37,6 +39,7 @@ public class Play extends BasicGameState {
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+		arrow = new Arrow();
 		map = new TiledMap(path);
 		focus = new Image("data/sprite/focus.png");
 		blockHeight = map.getTileHeight();
@@ -60,8 +63,8 @@ public class Play extends BasicGameState {
 				if(map.getTileProperty(tileID, "blocked", "false").equals("true")) 
 					boardState[col][row] = true;
 				else {
-					Animation[] ani = {new Animation(new SpriteSheet(new Image("data/sprite/sBlueBlock.png"), 160, 120), 25), 
-							new Animation(new SpriteSheet(new Image("data/sprite/BlueBlock.png"), 160, 120), 25)};
+					Animation[] ani = {new Animation(new SpriteSheet("data/sprite/sBlueBlock.png", 160, 120), 30), 
+							new Animation(new SpriteSheet("data/sprite/BlueBlock.png", 160, 120), 30)};
 					blockBoard[col][row] = new Block(ani);
 					boardState[col][row] = false;
 				}
@@ -83,6 +86,7 @@ public class Play extends BasicGameState {
 			}
 		}
 		map.render(0, 0, stage);
+		arrow.draw(posX, posY, blockWidth, blockHeight);
 		if(!start)
 			focus.draw(posX, posY, blockWidth, blockHeight);
 	}
@@ -99,6 +103,60 @@ public class Play extends BasicGameState {
 		boolean down = map.getTileProperty(tileId, "down", "false").equals("false");
 		boolean left = map.getTileProperty(tileId, "left", "false").equals("false");
 		boolean right = map.getTileProperty(tileId, "right", "false").equals("false");
+		
+		
+		//----------------------checking for arrow appearance------------------------------------------//
+		if(up && down && left && right) {
+			arrow.state(boardState[tileX][tileY-1], boardState[tileX][tileY+1], boardState[tileX-1][tileY], boardState[tileX+1][tileY]);
+		}
+		else if(up && down && left && !right) {
+			arrow.state(boardState[tileX][tileY-1], boardState[tileX][tileY+1], boardState[tileX-1][tileY], true);
+		}
+		else if(up && down && !left && right) {
+			arrow.state(boardState[tileX][tileY-1], boardState[tileX][tileY+1], true, boardState[tileX+1][tileY]);
+		}
+		else if(up && !down && left && right) {
+			arrow.state(boardState[tileX][tileY-1], true, boardState[tileX-1][tileY], boardState[tileX+1][tileY]);
+		}
+		else if(!up && down && left && right) {
+			arrow.state(true, boardState[tileX][tileY+1], boardState[tileX-1][tileY], boardState[tileX+1][tileY]);
+		}
+		else if(!up && !down && left && right) {
+			arrow.state(true, true, boardState[tileX-1][tileY], boardState[tileX+1][tileY]);
+		}
+		else if(!up && down && !left && right) {
+			arrow.state(true, boardState[tileX][tileY+1], true, boardState[tileX+1][tileY]);
+		}
+		else if(!up && down && left && !right) {
+			arrow.state(true, boardState[tileX][tileY+1], boardState[tileX-1][tileY], true);
+		}
+		else if(up && !down && !left && right) {
+			arrow.state(boardState[tileX][tileY-1], true, true, boardState[tileX+1][tileY]);
+		}
+		else if(up && !down && left && !right) {
+			arrow.state(boardState[tileX][tileY-1], true, boardState[tileX-1][tileY], true);
+		}
+		else if(up && down && !left && !right) {
+			arrow.state(boardState[tileX][tileY-1], boardState[tileX][tileY+1], true, true);
+		}
+		else if(!up && !down && !left && right) {
+			arrow.state(true, true, true, boardState[tileX+1][tileY]);
+		}
+		else if(!up && !down && left && !right) {
+			arrow.state(true, true, boardState[tileX-1][tileY], true);
+		}
+		else if(!up && down && !left && !right) {
+			arrow.state(true, boardState[tileX][tileY+1], true, true);
+		}
+		else if(up && !down && !left && !right) {
+			arrow.state(boardState[tileX][tileY-1], true, true, true);
+		}
+		else if(!up && !down && !left && !right) {
+			arrow.state(true, true, true, true);
+		}
+		//----------------------------------------end checking for arrow----------------------------//
+		
+		
 		
 		if(!keyList.isEmpty()) prevKey = keyList.peek();
 		if(!keys.isEmpty()) prevAllKey = keys.peek();
@@ -273,6 +331,7 @@ public class Play extends BasicGameState {
 					keyList.pop();
 				}
 			}
+			
 		}
 		//---------------end play----------------//
 		

@@ -21,11 +21,13 @@ public class Play extends BasicGameState{
 	private SelectButton group;
 	private Color colorFilter;
 	private Animation block;
+	private Animation arrow_right;
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		alienSprite = new SpriteSheet("data/sprite/alien_spritesheet.png", 32, 32);
 		alienAnimation = new Animation(alienSprite, dulation);
+		arrow_right = new Animation(new SpriteSheet("data/sprite/arrow_all.png", 160, 120), 150);
 		button = new Button(new Image("data/sprite/StartButton.png"));
 		colorFilter = new Color(192, 192, 192);
 		slimeDown = new SpriteSheet("data/sprite/downSlime.png", 160, 120, colorFilter);
@@ -49,6 +51,7 @@ public class Play extends BasicGameState{
 		button.render(200, 200);
 		group.render(150, 150);
 		block.draw(100, 100);
+		arrow_right.draw(50, 50);
 	}
 
 	@Override
