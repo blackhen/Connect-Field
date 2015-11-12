@@ -22,8 +22,10 @@ public class Arrow {
 	private Animation aDownLeftTop;
 	private Animation all;
 	private Animation inUse;
+	private boolean end;
 	
 	public Arrow() {
+		end = false;
 		try {
 			aLeft = new Animation(new SpriteSheet("data/sprite/arrow_left.png", 160, 120), 150);
 			aRight = new Animation(new SpriteSheet("data/sprite/arrow_right.png", 160, 120), 150);
@@ -48,6 +50,8 @@ public class Arrow {
 	}
 	
 	public void state(boolean stateUp, boolean stateDown, boolean stateLeft, boolean stateRight) {
+		if(end)
+			end = false;
 		if(!stateUp && !stateDown && !stateLeft && !stateRight)
 			inUse = all;
 		else if(!stateUp && stateDown && stateLeft && stateRight)
@@ -79,10 +83,11 @@ public class Arrow {
 		else if(stateUp && !stateDown && !stateLeft && !stateRight)
 			inUse = aRightDownLeft;
 		else if(stateUp && stateDown && stateLeft && stateRight) 
-			inUse = all;
+			end = true;
 	}
 	
 	public void draw(int x, int y, int width, int height) {
-		inUse.draw(x, y, width, height);
+		if(!end)
+			inUse.draw(x, y, width, height);
 	}
 }

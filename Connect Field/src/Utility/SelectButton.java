@@ -1,6 +1,8 @@
 package Utility;
 
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Input;
 
 public class SelectButton {
 	
@@ -9,6 +11,7 @@ public class SelectButton {
 	private int setX;
 	private int setY;
 	private int num_space;
+	private int currentState;
 	private boolean horizontal;
 	private boolean[] allState;
 	
@@ -17,9 +20,10 @@ public class SelectButton {
 		space = 0;
 		setX = 0;
 		setY = 0;
+		currentState = -1;
 		horizontal = true;
 		allState = new boolean[groupButton.length];
-		for(boolean each: allState) each = false;
+		for(int i = 0; i < allState.length; i++) allState[i] = false;
 	}
 	
 	public SelectButton(Button[] buttons, int space) {
@@ -27,10 +31,11 @@ public class SelectButton {
 		this.space = space;
 		setX = 0;
 		setY = 0;
+		currentState = -1;
 		num_space = 0;
 		horizontal = true;
 		allState = new boolean[groupButton.length];
-		for(boolean each: allState) each = false;
+		for(int i = 0; i < allState.length; i++) allState[i] = false;
 	}
 	
 	public SelectButton(Button[] buttons, boolean horizontal) {
@@ -38,10 +43,11 @@ public class SelectButton {
 		space = 0;
 		setX = 0;
 		setY = 0;
+		currentState = -1;
 		num_space = 0;
 		this.horizontal = horizontal;
 		allState = new boolean[groupButton.length];
-		for(boolean each: allState) each = false;
+		for(int i = 0; i < allState.length; i++) allState[i] = false;
 	}
 	
 	public SelectButton(Button[] buttons, int space, boolean horizontal) {
@@ -49,13 +55,14 @@ public class SelectButton {
 		this.space = space;
 		setX = 0;
 		setY = 0;
+		currentState = -1;
 		num_space = 0;
 		this.horizontal = horizontal;
 		allState = new boolean[groupButton.length];
-		for(boolean each: allState) each = false;
+		for(int i = 0; i < allState.length; i++) allState[i] = false;
 	}
 	
-	public void state() {
+	public void mouseState() {
 		
 		int prev = -1;
 		int count = 0;
@@ -69,8 +76,8 @@ public class SelectButton {
 		for(int i = 0; i <  groupButton.length; i++) {
 			groupButton[i].state();
 			
-			if(groupButton[i].isSelect() && prev == -1) allState[count] = true;
-			else if(groupButton[i].isSelect() && allState[prev]) {
+			if(groupButton[i].isSelected() && prev == -1) allState[count] = true;
+			else if(groupButton[i].isSelected() && allState[prev]) {
 				allState[prev] = false;
 				allState[count] = true;
 				groupButton[prev].setSelected(false);
@@ -91,6 +98,72 @@ public class SelectButton {
 			if(allState[i])
 				return i;
 		return -1;
+	}
+	
+	public void keyboardState(GameContainer gc) {
+		Input input = gc.getInput();
+		
+		if(horizontal) {
+			if(input.isKeyPressed(Input.KEY_LEFT)) {
+				clear();
+				shiftLeft();
+			}
+			else if(input.isKeyPressed(Input.KEY_RIGHT)) {
+				clear();
+				shiftRight();
+			}
+		}
+		else {
+			if(input.isKeyPressed(Input.KEY_UP)) {
+				clear();
+				shiftLeft();
+			}
+			else if(input.isKeyPressed(Input.KEY_DOWN)) {
+				clear();
+				shiftRight();
+			}
+		}
+		if(input.isKeyPressed(Input.KEY_ENTER)) {
+			clear();
+			allState[currentState] = true;
+			groupButton[currentState].setSelected(true);
+		}
+		
+		input.clearControlPressedRecord();
+	}
+	
+	private void clear() {
+		for(int i = 0; i < allState.length; i++) {
+			allState[i] = false;
+			groupButton[i].setMouseIn(false);
+			groupButton[i].setSelected(false);
+		}
+	}
+	
+	private void shiftLeft() {
+		if(currentState == -1 || currentState == 0) {
+			currentState = allState.length - 1;
+			clear();
+			groupButton[currentState].setMouseIn(true);
+		}
+		else {
+			currentState = currentState - 1;
+			clear();
+			groupButton[currentState].setMouseIn(true);
+		}
+	}
+	
+	private void shiftRight() {
+		if(currentState == -1 || currentState == allState.length - 1) {
+			currentState = 0;
+			clear();
+			groupButton[currentState].setMouseIn(true);
+		}
+		else {
+			currentState = currentState + 1;
+			clear();
+			groupButton[currentState].setMouseIn(true);
+		}
 	}
 	
 	public void render(int x, int y) {
@@ -136,7 +209,10 @@ public class SelectButton {
 	}
 	
 	public int getAllWidth() {
-		return groupButton[0].getWidth() * groupButton.length + (groupButton.length - 1) * space;
+		if(horizontal)
+			return groupButton[0].getWidth() * groupButton.length + (groupButton.length - 1) * space;
+		else
+			return groupButton[0].getWidth();
 	}
 	
 	public int getAllHeight() {

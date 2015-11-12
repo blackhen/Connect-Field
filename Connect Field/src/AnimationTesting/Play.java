@@ -2,6 +2,9 @@ package AnimationTesting;
 
 import org.lwjgl.input.Mouse;
 import Utility.Block;
+import Utility.Button;
+import Utility.SelectButton;
+
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import org.newdawn.slick.tiled.TiledMap;
@@ -39,7 +42,7 @@ public class Play extends BasicGameState{
 		buttons[0] = openMenu;
 		buttons[1] = closeMenu;
 		buttons[2] = newMenu;
-		group = new SelectButton(buttons, 20, false);
+		group = new SelectButton(buttons, 10, false);
 		block = new Animation(new SpriteSheet("data/sprite/BlueBlock.png", 160, 120), 50);
 		block.stopAt(5);
 	}
@@ -49,7 +52,7 @@ public class Play extends BasicGameState{
 		alienAnimation.draw(100, 100);
 		down.draw(50, 50);
 		button.render(200, 200);
-		group.render(150, 150);
+		group.render(250, 250);
 		block.draw(100, 100);
 		arrow_right.draw(50, 50);
 	}
@@ -57,9 +60,12 @@ public class Play extends BasicGameState{
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		Input input = gc.getInput();
+		int mouseX = Mouse.getX();
+		int mouseY = Mouse.getY();
 		alienAnimation.update(delta);
 		button.state();
-		group.state();
+		//group.mouseState();
+		group.keyboardState(gc);
 		if(input.isKeyPressed(Input.KEY_1)) {
 			block.restart();
 		}

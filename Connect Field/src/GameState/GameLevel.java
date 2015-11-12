@@ -45,6 +45,7 @@ public class GameLevel extends BasicGameState {
 			System.exit(0);
 		}
 		else if(input.isKeyPressed(Input.KEY_5)) {
+			sbg.getState(Main.menu).init(gc, sbg);
 			sbg.enterState(0);
 		}
 		

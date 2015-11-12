@@ -12,7 +12,6 @@ public class Play extends BasicGameState {
 	
 	private TiledMap map;
 	private Image focus;
-	private Animation slime;
 	private Arrow arrow;
 	
 	private int posX;
@@ -55,16 +54,15 @@ public class Play extends BasicGameState {
 		keyList = new Stack<String>();
 		keys = new Stack<String>();
 		booleans = new Stack<String>();
-		slime = new Animation(new SpriteSheet(new Image("data/sprite/downSlime.png"), 160, 120), 100);
-
+		
 		for(int row = 0; row < blockRow; row++) {
 			for(int col = 0; col < blockColumn; col++) {
 				int tileID = map.getTileId(col, row, stage);
 				if(map.getTileProperty(tileID, "blocked", "false").equals("true")) 
 					boardState[col][row] = true;
 				else {
-					Animation[] ani = {new Animation(new SpriteSheet("data/sprite/sBlueBlock.png", 160, 120), 30), 
-							new Animation(new SpriteSheet("data/sprite/BlueBlock.png", 160, 120), 30)};
+					Animation[] ani = {new Animation(new SpriteSheet("data/sprite/blockReverse.png", 160, 120), 30), 
+							new Animation(new SpriteSheet("data/sprite/blockFill.png", 160, 120), 30)};
 					blockBoard[col][row] = new Block(ani);
 					boardState[col][row] = false;
 				}
@@ -86,7 +84,8 @@ public class Play extends BasicGameState {
 			}
 		}
 		map.render(0, 0, stage);
-		arrow.draw(posX, posY, blockWidth, blockHeight);
+		if(start)
+			arrow.draw(posX, posY, blockWidth, blockHeight);
 		if(!start)
 			focus.draw(posX, posY, blockWidth, blockHeight);
 	}
@@ -105,7 +104,268 @@ public class Play extends BasicGameState {
 		boolean right = map.getTileProperty(tileId, "right", "false").equals("false");
 		
 		
-		//----------------------checking for arrow appearance------------------------------------------//
+		//----------checking for arrow appearance--------//
+		arrowChecking(up, down, left, right, tileX, tileY);
+		
+		if(!keyList.isEmpty()) prevKey = keyList.peek();
+		if(!keys.isEmpty()) prevAllKey = keys.peek();
+		if(!booleans.isEmpty()) bool = booleans.peek();
+		
+		//-------select start block--------//
+		if(!start) {
+			if(input.isKeyPressed(Input.KEY_UP)) {
+				posY -= blockHeight;
+				if(posY < 0) posY = 0;
+			}
+			else if(input.isKeyPressed(Input.KEY_DOWN)) {
+				posY += blockHeight;
+				if(posY > (blockHeight * (blockRow - 1))) posY = (blockHeight * (blockRow - 1));
+			}
+			else if(input.isKeyPressed(Input.KEY_LEFT)) {
+				posX -= blockWidth;
+				if(posX < 0) posX = 0;
+			}
+			else if(input.isKeyPressed(Input.KEY_RIGHT)) {
+				posX += blockWidth;
+				if(posX > (blockWidth * (blockColumn - 1))) posX = (blockWidth * (blockColumn - 1));
+			}
+			if(input.isKeyPressed(Input.KEY_ENTER) && !boardState[tileX][tileY]) {
+				boardState[tileX][tileY] = true;
+				blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+				lineBoard[tileX][tileY].setStart(true);
+				start = true;
+			}
+		}
+		//----------end select start block-----------//
+		
+		//----------play mode--------------//
+		else if(start) {
+			if(input.isKeyPressed(Input.KEY_UP)) {
+				if(up) {
+					posY -= blockHeight;
+					tileY = posY / blockHeight;
+					if(!boardState[tileX][tileY]) {
+						boardState[tileX][tileY] = true;
+						keyList.push("up");
+						keys.push("up");
+						booleans.push("true");
+						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+						lineBoard[tileX][tileY].addKey("up");
+						lineBoard[tileX][tileY + 1].addKey("up");
+					}
+					else if(boardState[tileX][tileY]) {
+						if(prevKey.equals("down")) {
+							boardState[tileX][tileY + 1] = false;
+							keyList.pop();
+							keys.push("up");
+							booleans.push("false");
+							blockBoard[tileX][tileY + 1].setState(boardState[tileX][tileY + 1]);
+							lineBoard[tileX][tileY].delKey();
+							lineBoard[tileX][tileY + 1].delKey();
+						}
+						else 
+							posY += blockHeight;
+					}
+				}
+			}
+			else if(input.isKeyPressed(Input.KEY_DOWN)) {
+				if(down) {
+					posY += blockHeight;
+					tileY = posY / blockHeight;
+					if(!boardState[tileX][tileY]) {
+						boardState[tileX][tileY] = true;
+						keyList.push("down");
+						keys.push("down");
+						booleans.push("true");
+						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+						lineBoard[tileX][tileY].addKey("down");
+						lineBoard[tileX][tileY - 1].addKey("down");
+					}
+					else if(boardState[tileX][tileY]) {
+						if(prevKey.equals("up")) {
+							boardState[tileX][tileY - 1] = false;
+							blockBoard[tileX][tileY - 1].setState(boardState[tileX][tileY - 1]);
+							keyList.pop();
+							keys.push("down");
+							booleans.push("false");
+							lineBoard[tileX][tileY].delKey();
+							lineBoard[tileX][tileY - 1].delKey();
+						}
+						else
+							posY -= blockHeight;
+					}
+				}
+			}
+			else if(input.isKeyPressed(Input.KEY_LEFT)) {
+				if(left) {
+					posX -= blockWidth;
+					tileX = posX / blockWidth;
+					if(!boardState[tileX][tileY]) {
+						boardState[tileX][tileY] = true;
+						keyList.push("left");
+						keys.push("left");
+						booleans.push("true");
+						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+						lineBoard[tileX][tileY].addKey("left");
+						lineBoard[tileX + 1][tileY].addKey("left");
+					}
+					else if(boardState[tileX][tileY]) {
+						if(prevKey.equals("right")) {
+							boardState[tileX + 1][tileY] = false;
+							blockBoard[tileX + 1][tileY].setState(boardState[tileX + 1][tileY]);
+							keyList.pop();
+							keys.push("left");
+							booleans.push("false");
+							lineBoard[tileX][tileY].delKey();
+							lineBoard[tileX + 1][tileY].delKey();
+						}
+						else
+							posX += blockWidth;
+					}
+				}
+			}
+			else if(input.isKeyPressed(Input.KEY_RIGHT)) {
+				if(right) {
+					posX += blockWidth;
+					tileX = posX / blockWidth;
+					if(!boardState[tileX][tileY]) {
+						boardState[tileX][tileY] = true;
+						keyList.push("right");
+						keys.push("right");
+						booleans.push("true");
+						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+						lineBoard[tileX][tileY].addKey("right");
+						lineBoard[tileX - 1][tileY].addKey("right");
+					}
+					else if(boardState[tileX][tileY]) {
+						if(prevKey.equals("left")) {
+							boardState[tileX - 1][tileY] = false;
+							keyList.pop();
+							keys.push("right");
+							booleans.push("false");
+							blockBoard[tileX - 1][tileY].setState(boardState[tileX - 1][tileY]);
+							lineBoard[tileX][tileY].delKey();
+							lineBoard[tileX - 1][tileY].delKey();
+						}
+						else
+							posX -= blockWidth;
+					}
+				}
+			}
+			else if(input.isKeyPressed(Input.KEY_Z)) {
+				if(keys.isEmpty()) {
+					boardState[tileX][tileY] = false;
+					lineBoard[tileX][tileY].delKey();
+					lineBoard[tileX][tileY].setStart(false);
+					start = false;
+					blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+				}
+				else if(prevAllKey.equals("up")) {
+					posY += blockHeight;
+					if(bool.equals("true")) {
+						boardState[tileX][tileY] = false;
+						lineBoard[tileX][tileY].delKey();
+						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+						tileY = posY / blockHeight;
+						lineBoard[tileX][tileY].delKey();
+						keyList.pop();
+					}
+					else { 
+						lineBoard[tileX][tileY].addKey("down");
+						tileY = posY / blockHeight;
+						boardState[tileX][tileY] = true;
+						lineBoard[tileX][tileY].addKey("down");
+						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+						keyList.push("down");
+					}
+					keys.pop();
+					booleans.pop();
+				}
+				else if(prevAllKey.equals("down")) {
+					posY -= blockHeight;
+					if(bool.equals("true")) {
+						boardState[tileX][tileY] = false;
+						lineBoard[tileX][tileY].delKey();
+						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+						tileY = posY / blockHeight;
+						lineBoard[tileX][tileY].delKey();
+						keyList.pop();
+					}
+					else {
+						lineBoard[tileX][tileY].addKey("up");
+						tileY = posY / blockHeight;
+						boardState[tileX][tileY] = true;
+						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+						lineBoard[tileX][tileY].addKey("up");
+						keyList.push("up");
+					}
+					keys.pop();
+					booleans.pop();
+				}
+				else if(prevAllKey.equals("left")) {
+					posX += blockWidth;
+					if(bool.equals("true")) {
+						boardState[tileX][tileY] = false;
+						lineBoard[tileX][tileY].delKey();
+						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+						tileX = posX / blockWidth;
+						lineBoard[tileX][tileY].delKey();
+						keyList.pop();
+					}
+					else {
+						lineBoard[tileX][tileY].addKey("right");
+						tileX = posX / blockWidth;
+						boardState[tileX][tileY] = true;
+						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+						lineBoard[tileX][tileY].addKey("right");
+						keyList.push("right");
+					}
+					keys.pop();
+					booleans.pop();
+				}
+				else if(prevAllKey.equals("right")) {
+					posX -= blockWidth;
+					if(bool.equals("true")) {
+						boardState[tileX][tileY] = false;
+						lineBoard[tileX][tileY].delKey();
+						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+						tileX = posX / blockWidth;
+						lineBoard[tileX][tileY].delKey();
+						keyList.pop();
+					}
+					else {
+						lineBoard[tileX][tileY].addKey("left");
+						tileX = posX / blockWidth;
+						boardState[tileX][tileY] = true;
+						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
+						lineBoard[tileX][tileY].addKey("left");
+						keyList.push("left");
+					}
+					keys.pop();
+					booleans.pop();
+				}
+			}
+			
+		}
+		//---------------end play----------------//
+		
+		if(input.isKeyPressed(Input.KEY_1)) {
+			sbg.enterState(Main.gameStage);
+		}
+		if(gameClear()) {
+			stage++;
+			sbg.getState(Main.play).init(gc, sbg);
+			sbg.enterState(Main.play);
+		}
+		input.clearKeyPressedRecord();
+	}
+
+	@Override
+	public int getID() {
+		return 3;
+	}
+	
+	private void arrowChecking(boolean up, boolean down, boolean left, boolean right, int tileX, int tileY) {
 		if(up && down && left && right) {
 			arrow.state(boardState[tileX][tileY-1], boardState[tileX][tileY+1], boardState[tileX-1][tileY], boardState[tileX+1][tileY]);
 		}
@@ -154,198 +414,17 @@ public class Play extends BasicGameState {
 		else if(!up && !down && !left && !right) {
 			arrow.state(true, true, true, true);
 		}
-		//----------------------------------------end checking for arrow----------------------------//
-		
-		
-		
-		if(!keyList.isEmpty()) prevKey = keyList.peek();
-		if(!keys.isEmpty()) prevAllKey = keys.peek();
-		
-		//-------select start block--------//
-		if(!start) {
-			if(input.isKeyPressed(Input.KEY_UP)) {
-				posY -= blockHeight;
-				if(posY < 0) posY = 0;
-			}
-			else if(input.isKeyPressed(Input.KEY_DOWN)) {
-				posY += blockHeight;
-				if(posY > (blockHeight * (blockRow - 1))) posY = (blockHeight * (blockRow - 1));
-			}
-			else if(input.isKeyPressed(Input.KEY_LEFT)) {
-				posX -= blockWidth;
-				if(posX < 0) posX = 0;
-			}
-			else if(input.isKeyPressed(Input.KEY_RIGHT)) {
-				posX += blockWidth;
-				if(posX > (blockWidth * (blockColumn - 1))) posX = (blockWidth * (blockColumn - 1));
-			}
-			if(input.isKeyPressed(Input.KEY_ENTER) && !boardState[tileX][tileY]) {
-				boardState[tileX][tileY] = true;
-				blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
-				lineBoard[tileX][tileY].setStart(true);
-				start = true;
-			}
-		}
-		//----------end select start block-----------//
-		
-		//----------play mode--------------//
-		else if(start) {
-			if(input.isKeyPressed(Input.KEY_UP)) {
-				if(up) {
-					posY -= blockHeight;
-					tileY = posY / blockHeight;
-					if(!boardState[tileX][tileY]) {
-						boardState[tileX][tileY] = true;
-						keyList.push("up");
-						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
-						lineBoard[tileX][tileY].addKey("up");
-						lineBoard[tileX][tileY + 1].addKey("up");
-					}
-					else if(boardState[tileX][tileY]) {
-						if(prevKey.equals("down")) {
-							boardState[tileX][tileY + 1] = false;
-							keyList.pop();
-							blockBoard[tileX][tileY + 1].setState(boardState[tileX][tileY + 1]);
-							lineBoard[tileX][tileY].delKey();
-							lineBoard[tileX][tileY + 1].delKey();
-						}
-						else 
-							posY += blockHeight;
-					}
-				}
-			}
-			else if(input.isKeyPressed(Input.KEY_DOWN)) {
-				if(down) {
-					posY += blockHeight;
-					tileY = posY / blockHeight;
-					if(!boardState[tileX][tileY]) {
-						boardState[tileX][tileY] = true;
-						keyList.push("down");
-						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
-						lineBoard[tileX][tileY].addKey("down");
-						lineBoard[tileX][tileY - 1].addKey("down");
-					}
-					else if(boardState[tileX][tileY]) {
-						if(prevKey.equals("up")) {
-							boardState[tileX][tileY - 1] = false;
-							blockBoard[tileX][tileY - 1].setState(boardState[tileX][tileY - 1]);
-							keyList.pop();
-							lineBoard[tileX][tileY].delKey();
-							lineBoard[tileX][tileY - 1].delKey();
-						}
-						else
-							posY -= blockHeight;
-					}
-				}
-			}
-			else if(input.isKeyPressed(Input.KEY_LEFT)) {
-				if(left) {
-					posX -= blockWidth;
-					tileX = posX / blockWidth;
-					if(!boardState[tileX][tileY]) {
-						boardState[tileX][tileY] = true;
-						keyList.push("left");
-						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
-						lineBoard[tileX][tileY].addKey("left");
-						lineBoard[tileX + 1][tileY].addKey("left");
-					}
-					else if(boardState[tileX][tileY]) {
-						if(prevKey.equals("right")) {
-							boardState[tileX + 1][tileY] = false;
-							blockBoard[tileX + 1][tileY].setState(boardState[tileX + 1][tileY]);
-							keyList.pop();
-							lineBoard[tileX][tileY].delKey();
-							lineBoard[tileX + 1][tileY].delKey();
-						}
-						else
-							posX += blockWidth;
-					}
-				}
-			}
-			else if(input.isKeyPressed(Input.KEY_RIGHT)) {
-				if(right) {
-					posX += blockWidth;
-					tileX = posX / blockWidth;
-					if(!boardState[tileX][tileY]) {
-						boardState[tileX][tileY] = true;
-						keyList.push("right");
-						blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
-						lineBoard[tileX][tileY].addKey("right");
-						lineBoard[tileX - 1][tileY].addKey("right");
-					}
-					else if(boardState[tileX][tileY]) {
-						if(prevKey.equals("left")) {
-							boardState[tileX - 1][tileY] = false;
-							keyList.pop();
-							blockBoard[tileX - 1][tileY].setState(boardState[tileX - 1][tileY]);
-							lineBoard[tileX][tileY].delKey();
-							lineBoard[tileX - 1][tileY].delKey();
-						}
-						else
-							posX -= blockWidth;
-					}
-				}
-			}
-			else if(input.isKeyPressed(Input.KEY_Z)) {
-				if(keyList.isEmpty()) {
-					boardState[tileX][tileY] = false;
-					lineBoard[tileX][tileY].delKey();
-					lineBoard[tileX][tileY].setStart(false);
-					start = false;
-					blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
-				}
-				else if(prevKey.equals("up")) {
-					posY += blockHeight;
-					boardState[tileX][tileY] = false;
-					lineBoard[tileX][tileY].delKey();
-					blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
-					tileY = posY / blockHeight;
-					lineBoard[tileX][tileY].delKey();
-					keyList.pop();
-				}
-				else if(prevKey.equals("down")) {
-					posY -= blockHeight;
-					boardState[tileX][tileY] = false;
-					lineBoard[tileX][tileY].delKey();
-					blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
-					tileY = posY / blockHeight;
-					lineBoard[tileX][tileY].delKey();
-					keyList.pop();
-				}
-				else if(prevKey.equals("left")) {
-					posX += blockWidth;
-					boardState[tileX][tileY] = false;
-					lineBoard[tileX][tileY].delKey();
-					blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
-					tileX = posX / blockWidth;
-					lineBoard[tileX][tileY].delKey();
-					keyList.pop();
-				}
-				else if(prevKey.equals("right")) {
-					posX -= blockWidth;
-					boardState[tileX][tileY] = false;
-					lineBoard[tileX][tileY].delKey();
-					blockBoard[tileX][tileY].setState(boardState[tileX][tileY]);
-					tileX = posX / blockWidth;
-					lineBoard[tileX][tileY].delKey();
-					keyList.pop();
-				}
-			}
-			
-		}
-		//---------------end play----------------//
-		
-		if(input.isKeyPressed(Input.KEY_1)) {
-			sbg.enterState(Main.gameStage);
-		}
-		input.clearKeyPressedRecord();
-	}
-
-	@Override
-	public int getID() {
-		return 3;
 	}
 	
+	private boolean gameClear() {
+		for(int row = 0; row < blockRow; row++) {
+			for(int col = 0; col < blockColumn; col++) {
+				if(!boardState[row][col])
+					return false;
+			}
+		}
+		return true;
+	}
 	
 	public static void setGame(String level, int stages) throws SlickException {
 		path = "data/Stage/" + level + ".tmx";

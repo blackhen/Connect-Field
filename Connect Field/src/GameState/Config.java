@@ -22,6 +22,7 @@ public class Config extends BasicGameState {
 		Input input = gc.getInput();
 		
 		if(input.isKeyPressed(Input.KEY_1)) {
+			sbg.getState(Main.menu).init(gc, sbg);
 			sbg.enterState(0);
 		}
 		else if(input.isKeyPressed(Input.KEY_2)) {

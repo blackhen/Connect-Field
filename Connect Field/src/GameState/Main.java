@@ -2,6 +2,8 @@ package GameState;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class Main extends StateBasedGame {
 	
@@ -42,6 +44,7 @@ public class Main extends StateBasedGame {
 				gc = new AppGameContainer(new Main(title));
 				gc.setDisplayMode(SCREEN_WIDTH, SCREEN_HEIGHT, false);
 				gc.setTargetFrameRate(60);
+				gc.setShowFPS(false);
 				gc.start();
 			} catch(SlickException e) {
 				e.printStackTrace();

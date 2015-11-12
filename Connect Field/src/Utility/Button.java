@@ -40,11 +40,9 @@ public class Button {
 		mouseY = Math.abs(Mouse.getY() - 600);
 		
 		if(mouseX >= currentX && mouseX <= currentX + buttonWidth && 
-			mouseY >= currentY && mouseY <= currentY + buttonHeight ) {
+			mouseY >= currentY && mouseY <= currentY + buttonHeight) {
 			onButton = true;
-			button = buttonSheet.getSprite(0, 1);
 			if(Mouse.isButtonDown(0)) {
-				button = buttonSheet.getSprite(0, 2);
 				isClick = true;
 				if(!Mouse.isButtonDown(1)) {
 					isSelect = true;
@@ -57,17 +55,15 @@ public class Button {
 		}
 		else {
 			onButton = false;
-			button = buttonSheet.getSprite(0, 0);
 		}
-		
-		if(isSelect)
-			button = buttonSheet.getSprite(0, 2);
-		else  if(!isSelect && !onButton)
-			button = buttonSheet.getSprite(0, 0);
 	}
 	
 	public void setSelected(boolean select) {
 		isSelect = select;
+	}
+	
+	public void setMouseIn(boolean on) {
+		onButton = on;
 	}
 	
 	public int getWidth() {
@@ -94,13 +90,25 @@ public class Button {
 		return isClick;
 	}
 	
-	public boolean isSelect() {
+	public boolean isSelected() {
 		return isSelect;
 	}
 	
 	public void render(int x, int y) {
 		currentX = x;
 		currentY = y;
+		if(!onButton && !isClick && !isSelect) {
+			button = buttonSheet.getSprite(0, 0);
+		}
+		else if(onButton && !isClick && !isSelect) {
+			button = buttonSheet.getSprite(0, 1);
+		}
+		else if(isClick && !isSelect) {
+			button = buttonSheet.getSprite(0, 2);
+		}
+		else if(isSelect) {
+			button = buttonSheet.getSprite(0, 2);
+		}
 		button.draw(currentX, currentY);
 	}
 

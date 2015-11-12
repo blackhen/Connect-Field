@@ -17,8 +17,8 @@ public class Block {
 	
 	public Block(Animation[] ani) {
 		this.animation = ani;
-		this.animation[0].stopAt(6);
-		this.animation[1].stopAt(6);
+		this.animation[0].stopAt(5);
+		this.animation[1].stopAt(5);
 		current = ani[0];
 	}
 	

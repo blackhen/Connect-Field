@@ -2,6 +2,8 @@ package GameState;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class GameStage extends BasicGameState {
 	
@@ -38,22 +40,22 @@ public class GameStage extends BasicGameState {
 		if(input.isKeyPressed(Input.KEY_1)) {
 			Play.setGame(level, 0);
 			sbg.getState(Main.play).init(gc, sbg);
-			sbg.enterState(Main.play);
+			sbg.enterState(Main.play, new FadeOutTransition(), new FadeInTransition());
 		}
 		else if(input.isKeyPressed(Input.KEY_2)) {
 			Play.setGame(level, 1);
 			sbg.getState(Main.play).init(gc, sbg);
-			sbg.enterState(Main.play);
+			sbg.enterState(Main.play, new FadeOutTransition(), new FadeInTransition());
 		}
 		else if(input.isKeyPressed(Input.KEY_3)) {
 			Play.setGame(level, 2);
 			sbg.getState(Main.play).init(gc, sbg);
-			sbg.enterState(Main.play);
+			sbg.enterState(Main.play, new FadeOutTransition(), new FadeInTransition());
 		}
 		else if(input.isKeyPressed(Input.KEY_4)) {
 			Play.setGame(level, 3);
 			sbg.getState(Main.play).init(gc, sbg);
-			sbg.enterState(Main.play);
+			sbg.enterState(Main.play, new FadeOutTransition(), new FadeInTransition());
 		}
 		else if(input.isKeyPressed(Input.KEY_5)) {
 			sbg.enterState(3);
