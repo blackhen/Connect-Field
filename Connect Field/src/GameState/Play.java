@@ -11,7 +11,7 @@ import org.newdawn.slick.tiled.TiledMap;
 public class Play extends BasicGameState {
 	
 	private TiledMap map;
-	private Image focus;
+	private SpriteSheet focus;
 	private Arrow arrow;
 	
 	private int posX;
@@ -31,6 +31,7 @@ public class Play extends BasicGameState {
 	private Stack<String> booleans;
 	
 	private static String path = "data/Stage/Easy.tmx";
+	private static String line_path = "data/sprite/line_Easy.png";
 	private String prevKey = "";
 	private String prevAllKey = "";
 	private String bool = "";
@@ -40,7 +41,7 @@ public class Play extends BasicGameState {
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		arrow = new Arrow();
 		map = new TiledMap(path);
-		focus = new Image("data/sprite/focus.png");
+		focus = new SpriteSheet("data/sprite/line_Easy.png", 160, 120);
 		blockHeight = map.getTileHeight();
 		blockWidth = map.getTileWidth();
 		blockRow = map.getHeight();
@@ -61,13 +62,14 @@ public class Play extends BasicGameState {
 				if(map.getTileProperty(tileID, "blocked", "false").equals("true")) 
 					boardState[col][row] = true;
 				else {
-					Animation[] ani = {new Animation(new SpriteSheet("data/sprite/blockReverse.png", 160, 120), 30), 
-							new Animation(new SpriteSheet("data/sprite/blockFill.png", 160, 120), 30)};
+					Animation[] ani = {new Animation(new SpriteSheet("data/sprite/blockReverse.png", 160, 120), 40), 
+							new Animation(new SpriteSheet("data/sprite/blockFill.png", 160, 120), 40)};
+					ani[0].setCurrentFrame(5);
 					blockBoard[col][row] = new Block(ani);
 					boardState[col][row] = false;
 				}
 				
-				lineBoard[col][row] = new Line(new SpriteSheet("data/sprite/line.png", 160, 120));
+				lineBoard[col][row] = new Line(new SpriteSheet(line_path, blockWidth, blockHeight));
 				lineBoard[col][row].setStart(false);
 			}
 		}
@@ -84,10 +86,9 @@ public class Play extends BasicGameState {
 			}
 		}
 		map.render(0, 0, stage);
-		if(start)
-			arrow.draw(posX, posY, blockWidth, blockHeight);
+		arrow.draw(posX, posY, blockWidth, blockHeight);
 		if(!start)
-			focus.draw(posX, posY, blockWidth, blockHeight);
+			focus.getSubImage(1, 0).draw(posX, posY, blockWidth, blockHeight);
 	}
 
 	@Override
@@ -102,7 +103,6 @@ public class Play extends BasicGameState {
 		boolean down = map.getTileProperty(tileId, "down", "false").equals("false");
 		boolean left = map.getTileProperty(tileId, "left", "false").equals("false");
 		boolean right = map.getTileProperty(tileId, "right", "false").equals("false");
-		
 		
 		//----------checking for arrow appearance--------//
 		arrowChecking(up, down, left, right, tileX, tileY);
@@ -347,7 +347,7 @@ public class Play extends BasicGameState {
 			}
 			
 		}
-		//---------------end play----------------//
+		//---------------end play-------------------------------------------------------------//
 		
 		if(input.isKeyPressed(Input.KEY_1)) {
 			sbg.enterState(Main.gameStage);
@@ -428,6 +428,7 @@ public class Play extends BasicGameState {
 	
 	public static void setGame(String level, int stages) throws SlickException {
 		path = "data/Stage/" + level + ".tmx";
+		line_path = "data/sprite/line_" + level + ".png";
 		stage = stages;
 	}
 }

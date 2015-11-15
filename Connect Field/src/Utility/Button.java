@@ -44,18 +44,23 @@ public class Button {
 			onButton = true;
 			if(Mouse.isButtonDown(0)) {
 				isClick = true;
-				if(!Mouse.isButtonDown(1)) {
-					isSelect = true;
-				}
-				else
-					isSelect = false;
 			}
-			else 
-				isClick = false;
+			
+			if(!Mouse.isButtonDown(0) && isClick) {
+				isSelect = true;
+			}
+			else
+				isSelect = false;
 		}
 		else {
 			onButton = false;
+			isClick = false;
+			isSelect = false;
 		}
+	}
+	
+	public void setClick(boolean click) {
+		isClick = click;
 	}
 	
 	public void setSelected(boolean select) {
@@ -73,20 +78,12 @@ public class Button {
 	public int getHeight() {
 		return buttonHeight;
 	}
-	
-	public int getX() {
-		return currentX;
-	}
-	
-	public int getY() {
-		return currentY;
-	}
-	
+
 	public boolean onButton() {
 		return onButton;
 	}
 	
-	public boolean isClicking() {
+	public boolean isCick() {
 		return isClick;
 	}
 	
@@ -111,5 +108,4 @@ public class Button {
 		}
 		button.draw(currentX, currentY);
 	}
-
 }
