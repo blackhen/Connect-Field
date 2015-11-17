@@ -82,5 +82,4 @@ public class GameLevel extends BasicGameState {
 	public int getID() {
 		return 1;
 	}
-
 }

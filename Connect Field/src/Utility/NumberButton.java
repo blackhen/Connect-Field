@@ -55,9 +55,6 @@ public class NumberButton {
 		part1.draw(xBase - part1.getWidth() + 2, yBase - (part1.getHeight() / 2));
 		part2.draw(xBase - 2, yBase - (part2.getHeight() / 2));
 		if(locked)
-			lockImg.draw(x, y);
-			
+			lockImg.draw(x, y);		
 	}
-	
-	
 }

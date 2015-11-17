@@ -46,6 +46,7 @@ public class Play extends BasicGameState {
 	private boolean start;
 	private boolean pause;
 	private boolean clear;
+	private boolean finishedWrite;
 	private Stack<String> keyList;
 	private Stack<String> keys;
 	private Stack<String> booleans;
@@ -84,6 +85,7 @@ public class Play extends BasicGameState {
 		start = false;
 		pause = false;
 		clear = false;
+		finishedWrite = false;
 		keyList = new Stack<String>();
 		keys = new Stack<String>();
 		booleans = new Stack<String>();
@@ -411,7 +413,6 @@ public class Play extends BasicGameState {
 				}
 			}
 		}
-		//---------------end play-------------------------------------------------------------//
 		else if(pause || clear) {
 			if(clear) {
 				if(stage != 0)
@@ -426,6 +427,7 @@ public class Play extends BasicGameState {
 			homeButton.state();
 			resetButton.state();
 		}
+		//---------------end play-------------------------------------------------------------//
 		
 		//---------------checking button state-----------------------//
 		if(playButton.isSelected()) {
@@ -463,12 +465,17 @@ public class Play extends BasicGameState {
 			sbg.enterState(Main.play, new FadeOutTransition(), new FadeInTransition());
 		}
 		//-----------------------------------------------------------//
-		
-		if(input.isKeyPressed(Input.KEY_1)) {
-			sbg.enterState(Main.gameStage);
-		}
+
 		if(gameClear()) {
 			clear = true;
+			if(!finishedWrite && stage != 19) {
+				try {
+					save.saveData(GameStage.level, stage+1);
+					finishedWrite = true;
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		input.clearKeyPressedRecord();
 	}

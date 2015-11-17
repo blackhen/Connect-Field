@@ -122,6 +122,4 @@ public class Button {
 		}
 		button.draw(currentX, currentY);
 	}
-	
-	
 }
