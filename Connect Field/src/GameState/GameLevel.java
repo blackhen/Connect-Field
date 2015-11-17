@@ -42,7 +42,7 @@ public class GameLevel extends BasicGameState {
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-		Input input = gc.getInput();
+
 		backButton.state();
 		easy_button.state();
 		normal_button.state();

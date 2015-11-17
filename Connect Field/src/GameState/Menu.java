@@ -1,13 +1,11 @@
 package GameState;
 
-import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import Utility.Button;
-import Utility.SelectButton;
 
 public class Menu extends BasicGameState {
 	

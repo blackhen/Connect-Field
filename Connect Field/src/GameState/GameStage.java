@@ -1,5 +1,7 @@
 package GameState;
 
+import java.io.IOException;
+
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import org.newdawn.slick.state.transition.FadeInTransition;
@@ -7,16 +9,18 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import Utility.Button;
 import Utility.NumberButton;
+import Utility.SaveData;
 
 public class GameStage extends BasicGameState {
 	
-	private static String level = "";
+	public static String level = "";
 	private NumberButton[][] numberBoard;
 	private Button backButton;
 	private Image background;
 	private Image hf_stage;
 	private float posX;
 	private float posY;
+	private SaveData save;
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -27,13 +31,21 @@ public class GameStage extends BasicGameState {
 		backButton = new Button(new Image("data/sprite/back_button.png"));
 		posX = 0F;
 		posY = 0F;
+		try {
+			save = new SaveData();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		for(int i = 0; i < 4; i++) {
 			for(int j = 0; j < 5; j++) {
-				numberBoard[i][j] = new NumberButton(count, true);
+				if(save.getData(level) >= count) {
+					numberBoard[i][j] = new NumberButton(count, false);
+				}
+				else
+					numberBoard[i][j] = new NumberButton(count, true);
 				count++;
 			}
 		}
-		
 	}
 
 	@Override
@@ -56,7 +68,7 @@ public class GameStage extends BasicGameState {
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-		Input input = gc.getInput();
+
 		backButton.state();
 		
 		for(int i = 0; i < 4; i++) {

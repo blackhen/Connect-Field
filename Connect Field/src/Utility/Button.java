@@ -9,6 +9,7 @@ public class Button {
 	private boolean onButton;
 	private boolean isClick;
 	private boolean isSelect;
+	private boolean clickOutside;
 	
 	private int mouseX;
 	private int mouseY;
@@ -28,6 +29,7 @@ public class Button {
 		onButton = false;
 		isClick = false;
 		isSelect = false;
+		clickOutside = false;
 		mouseX = 0;
 		mouseY = 0;
 		currentX = 0;
@@ -39,8 +41,16 @@ public class Button {
 		mouseX = Mouse.getX();
 		mouseY = Math.abs(Mouse.getY() - 600);
 		
+		if((mouseX < currentX|| mouseX > currentX + buttonWidth) || 
+				(mouseY < currentY || mouseY > currentY + buttonHeight)) {
+			if(Mouse.isButtonDown(0))
+				clickOutside = true;
+			else
+				clickOutside = false;
+		}
+		
 		if(mouseX >= currentX && mouseX <= currentX + buttonWidth && 
-			mouseY >= currentY && mouseY <= currentY + buttonHeight) {
+			mouseY >= currentY && mouseY <= currentY + buttonHeight && !clickOutside) {
 			onButton = true;
 			if(Mouse.isButtonDown(0)) {
 				isClick = true;
@@ -91,6 +101,10 @@ public class Button {
 		return isSelect;
 	}
 	
+	public void setAlpha(float alpha) {
+		button.setAlpha(alpha);
+	}
+	
 	public void render(int x, int y) {
 		currentX = x;
 		currentY = y;
@@ -108,4 +122,6 @@ public class Button {
 		}
 		button.draw(currentX, currentY);
 	}
+	
+	
 }

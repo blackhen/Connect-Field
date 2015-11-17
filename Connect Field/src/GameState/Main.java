@@ -2,8 +2,6 @@ package GameState;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
-import org.newdawn.slick.state.transition.FadeInTransition;
-import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class Main extends StateBasedGame {
 	
@@ -50,5 +48,5 @@ public class Main extends StateBasedGame {
 				e.printStackTrace();
 			}
 	
-		}
+	}
 }

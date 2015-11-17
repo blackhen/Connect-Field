@@ -1,18 +1,36 @@
 package GameState;
 
-import Utility.Arrow;
-import Utility.Block;
-import Utility.Line;
+import java.io.IOException;
 import java.util.Stack;
+
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 import org.newdawn.slick.tiled.TiledMap;
+
+import Utility.Arrow;
+import Utility.Block;
+import Utility.Button;
+import Utility.Line;
+import Utility.SaveData;
 
 public class Play extends BasicGameState {
 	
 	private TiledMap map;
 	private SpriteSheet focus;
 	private Arrow arrow;
+	private SaveData save;
+	private Image backgroundMenu;
+	private Image fade;
+	private Image pauseText;
+	private Image clearText;
+	private Button playButton;
+	private Button resetButton;
+	private Button stageButton;
+	private Button homeButton;
+	private Button prevButton;
+	private Button nextButton;
 	
 	private int posX;
 	private int posY;
@@ -26,6 +44,8 @@ public class Play extends BasicGameState {
 	private Line[][] lineBoard;
 	private boolean[][] boardState;
 	private boolean start;
+	private boolean pause;
+	private boolean clear;
 	private Stack<String> keyList;
 	private Stack<String> keys;
 	private Stack<String> booleans;
@@ -42,6 +62,16 @@ public class Play extends BasicGameState {
 		arrow = new Arrow();
 		map = new TiledMap(path);
 		focus = new SpriteSheet("data/sprite/line_Easy.png", 160, 120);
+		backgroundMenu = new Image("data/sprite/menu_background.png");
+		fade = new Image("data/sprite/pause.png");
+		pauseText = new Image("data/sprite/pause_text.png");
+		clearText = new Image("data/sprite/gameclear_text.png");
+		playButton = new Button(new Image("data/sprite/play_button.png"));
+		resetButton = new Button(new Image("data/sprite/reload_button.png"));
+		stageButton = new Button(new Image("data/sprite/stage_button.png"));
+		homeButton = new Button(new Image("data/sprite/home_button.png"));
+		prevButton = new Button(new Image("data/sprite/prev_button.png"));
+		nextButton = new Button(new Image("data/sprite/next_Button.png"));
 		blockHeight = map.getTileHeight();
 		blockWidth = map.getTileWidth();
 		blockRow = map.getHeight();
@@ -52,6 +82,8 @@ public class Play extends BasicGameState {
 		boardState = new boolean[blockWidth][blockHeight];
 		lineBoard =  new Line[blockWidth][blockHeight];
 		start = false;
+		pause = false;
+		clear = false;
 		keyList = new Stack<String>();
 		keys = new Stack<String>();
 		booleans = new Stack<String>();
@@ -73,10 +105,17 @@ public class Play extends BasicGameState {
 				lineBoard[col][row].setStart(false);
 			}
 		}
+		
+		try {
+			save = new SaveData();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-
+	
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+		
 		for(int row = 0; row < blockRow; row++) {
 			for(int col = 0; col < blockColumn; col++) {
 				if(map.getTileProperty(map.getTileId(col, row, stage), "blocked", "false").equals("false")) {
@@ -89,6 +128,23 @@ public class Play extends BasicGameState {
 		arrow.draw(posX, posY, blockWidth, blockHeight);
 		if(!start)
 			focus.getSubImage(1, 0).draw(posX, posY, blockWidth, blockHeight);
+		
+		if(pause || clear) {
+			fade.draw(0, 0);
+			backgroundMenu.draw(0, 0);
+			resetButton.render(800-185, 235);
+			homeButton.render(800-135, 310);
+			stageButton.render(800-225, 310);
+			if(pause) {
+				pauseText.draw(100, 300 - pauseText.getHeight() / 2);
+				playButton.render(800-270, 235);
+			}
+			else if(clear) {
+				clearText.draw(15, 300 - clearText.getHeight() / 2);
+				nextButton.render(700, 235);
+				prevButton.render(800-270, 235);
+			}
+		}
 	}
 
 	@Override
@@ -111,8 +167,16 @@ public class Play extends BasicGameState {
 		if(!keys.isEmpty()) prevAllKey = keys.peek();
 		if(!booleans.isEmpty()) bool = booleans.peek();
 		
+		if(input.isKeyPressed(Input.KEY_ESCAPE) && !clear) {
+			if(pause)
+				pause = false;
+			else
+				pause = true;
+		}
+		
 		//-------select start block--------//
-		if(!start) {
+		if(!start && !pause && !clear) {
+
 			if(input.isKeyPressed(Input.KEY_UP)) {
 				posY -= blockHeight;
 				if(posY < 0) posY = 0;
@@ -139,7 +203,8 @@ public class Play extends BasicGameState {
 		//----------end select start block-----------//
 		
 		//----------play mode--------------//
-		else if(start) {
+		else if(start && !pause && !clear) {
+
 			if(input.isKeyPressed(Input.KEY_UP)) {
 				if(up) {
 					posY -= blockHeight;
@@ -345,17 +410,65 @@ public class Play extends BasicGameState {
 					booleans.pop();
 				}
 			}
-			
 		}
 		//---------------end play-------------------------------------------------------------//
+		else if(pause || clear) {
+			if(clear) {
+				if(stage != 0)
+					prevButton.state();
+				if(stage != 19) 
+					nextButton.state();
+			}
+			else if(pause) {
+				playButton.state();
+			}
+			stageButton.state();
+			homeButton.state();
+			resetButton.state();
+		}
+		
+		//---------------checking button state-----------------------//
+		if(playButton.isSelected()) {
+			playButton.setClick(false);
+			playButton.setSelected(false);
+			pause = false;
+		}
+		else if(resetButton.isSelected()) {
+			Play.setGame(GameStage.level, stage);
+			sbg.getState(Main.play).init(gc, sbg);
+			sbg.enterState(Main.play);
+		}
+		else if(stageButton.isSelected()) {
+			sbg.getState(Main.gameStage).init(gc, sbg);;
+			sbg.enterState(Main.gameStage, new FadeOutTransition(), new FadeInTransition());
+		}
+		else if(homeButton.isSelected()) {
+			sbg.enterState(Main.menu, new FadeOutTransition(), new FadeInTransition());
+		}
+		else if(prevButton.isSelected()) {
+			stage--;
+			Play.setGame(GameStage.level, stage);
+			sbg.getState(Main.play).init(gc, sbg);
+			sbg.enterState(Main.play, new FadeOutTransition(), new FadeInTransition());
+		}
+		else if(nextButton.isSelected()) {
+			stage++;
+			try {
+				save.saveData(GameStage.level, stage);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			Play.setGame(GameStage.level, stage);
+			sbg.getState(Main.play).init(gc, sbg);
+			sbg.enterState(Main.play, new FadeOutTransition(), new FadeInTransition());
+		}
+		//-----------------------------------------------------------//
 		
 		if(input.isKeyPressed(Input.KEY_1)) {
 			sbg.enterState(Main.gameStage);
 		}
 		if(gameClear()) {
-			stage++;
-			sbg.getState(Main.play).init(gc, sbg);
-			sbg.enterState(Main.play);
+			clear = true;
 		}
 		input.clearKeyPressedRecord();
 	}
