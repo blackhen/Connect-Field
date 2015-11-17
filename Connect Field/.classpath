@@ -9,5 +9,7 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="Connect Field/libraries/lwjgl-2.9.3/native/windows"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="D:/Workspace/Connect-Field/Connect Field/libraries/jogg-0.0.7.jar"/>
+	<classpathentry kind="lib" path="D:/Workspace/Connect-Field/Connect Field/libraries/jorbis-0.0.15.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -22,6 +22,7 @@ public class Menu extends BasicGameState {
 	private Button fullscreen;
 	private Animation subIn;
 	private Animation subOut;
+	private Sound backgroundSound;
 	private float posX;
 	private float posY;
 	private boolean settingIn;
@@ -45,6 +46,7 @@ public class Menu extends BasicGameState {
 		subOut = new Animation(new SpriteSheet("data/sprite/sub_setting2.png", 210, 70), 25);
 		sound = new Button(new Image("data/sprite/close_button.png"));
 		fullscreen = new Button(new Image("data/sprite/close_button.png"));
+		backgroundSound = new Sound("data/Sound/Odyssey.ogg");
 		subIn.stopAt(6);
 		subOut.stopAt(6);
 		subOut.stop();
@@ -86,6 +88,12 @@ public class Menu extends BasicGameState {
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		gc.setFullscreen(fullOn);
+		
+		if(!soundOn)
+			backgroundSound.stop();
+		else if(soundOn && !backgroundSound.playing()) {
+			backgroundSound.loop();
+		}
 		
 		startButton.state();
 		settingButton.state();
