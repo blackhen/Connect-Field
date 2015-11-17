@@ -12,14 +12,14 @@ public class Main extends StateBasedGame {
 	public final static int gameLevel = 1;
 	public final static int gameStage = 2;
 	public final static int play = 3;
-	public final static int config = 4;
+	public final static int help = 4;
 
 	public Main(String title) {
 		super(title);
 		this.addState(new Menu());
 		this.addState(new GameLevel());
 		this.addState(new GameStage());
-		this.addState(new Config());
+		this.addState(new Help());
 		this.addState(new Play());
 	}
 
@@ -29,7 +29,7 @@ public class Main extends StateBasedGame {
 		this.getState(gameLevel).init(gc, this);
 		this.getState(gameStage).init(gc, this);
 		this.getState(play).init(gc, this);
-		this.getState(config).init(gc, this);
+		this.getState(help).init(gc, this);
 		
 		this.enterState(menu);
 		

@@ -38,6 +38,7 @@ public class Button {
 	}
 	
 	public void state() {
+		
 		mouseX = Mouse.getX();
 		mouseY = Math.abs(Mouse.getY() - 600);
 		

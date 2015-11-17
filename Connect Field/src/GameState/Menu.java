@@ -143,7 +143,10 @@ public class Menu extends BasicGameState {
 		//----------------------------------------------------------------------//
 		
 		if(helpButton.isSelected()) {
-			
+			helpButton.setClick(false);
+			helpButton.setSelected(false);
+			sbg.getState(Main.help).init(gc, sbg);
+			sbg.enterState(Main.help, new FadeOutTransition(), new FadeInTransition());
 		}
 		if(exitButton.isSelected()) {
 			System.exit(0);

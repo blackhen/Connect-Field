@@ -169,11 +169,8 @@ public class Play extends BasicGameState {
 		if(!keys.isEmpty()) prevAllKey = keys.peek();
 		if(!booleans.isEmpty()) bool = booleans.peek();
 		
-		if(input.isKeyPressed(Input.KEY_ESCAPE) && !clear) {
-			if(pause)
-				pause = false;
-			else
-				pause = true;
+		if((input.isKeyPressed(Input.KEY_ESCAPE) || input.isMousePressed(1)) && !clear) {
+			pause = !pause;
 		}
 		
 		//-------select start block--------//
