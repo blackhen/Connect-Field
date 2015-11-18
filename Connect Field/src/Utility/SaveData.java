@@ -67,11 +67,11 @@ public class SaveData {
 		fos = new FileOutputStream("save.dat");
 		dos = new DataOutputStream(fos);
 		
-		if(level.equals("Easy")) 
+		if(level.equals("Easy")  && stage >= easy) 
 			easy = stage + 1;
-		else if(level.equals("Normal"))
+		else if(level.equals("Normal") && stage >= normal)
 			normal = stage + 1;
-		else if(level.equals("Hard"))
+		else if(level.equals("Hard") && stage >= hard)
 			hard = stage + 1;
 		
 		for(int i = 0; i < easy; i++)

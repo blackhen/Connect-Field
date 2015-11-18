@@ -414,7 +414,7 @@ public class Play extends BasicGameState {
 			if(clear) {
 				if(stage != 0)
 					prevButton.state();
-				if(stage != 19) 
+				if(stage != 19 || (stage == 19 && !GameStage.level.equals("Hard"))) 
 					nextButton.state();
 			}
 			else if(pause) {
@@ -451,11 +451,16 @@ public class Play extends BasicGameState {
 			sbg.enterState(Main.play, new FadeOutTransition(), new FadeInTransition());
 		}
 		else if(nextButton.isSelected()) {
-			stage++;
-			try {
-				save.saveData(GameStage.level, stage);
-			} catch (IOException e) {
-				e.printStackTrace();
+			if(GameStage.level.equals("Easy") && stage == 19) {
+				stage = 0;
+				GameStage.setLevel("Normal");
+			}
+			else if(GameStage.level.equals("Normal") && stage == 19) {
+				stage = 0;
+				GameStage.setLevel("Hard");
+			}
+			else {
+				stage++;
 			}
 			Play.setGame(GameStage.level, stage);
 			sbg.getState(Main.play).init(gc, sbg);

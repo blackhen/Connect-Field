@@ -1,807 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="8" height="8" tilewidth="100" tileheight="75" backgroundcolor="#ffffff" nextobjectid="1">
- <tileset firstgid="1" name="Normal" tilewidth="100" tileheight="75" tilecount="140">
-  <image source="Normal.png" width="1000" height="1050"/>
-  <tile id="0">
-   <properties>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="1">
-   <properties>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="2">
-   <properties>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="3">
-   <properties>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="4">
-   <properties>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="5">
-   <properties>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="6">
-   <properties>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="7">
-   <properties>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="8">
-   <properties>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="9">
-   <properties>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="10">
-   <properties>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="11">
-   <properties>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="12">
-   <properties>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="13">
-   <properties>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="14">
-   <properties>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="15">
-   <properties>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="16">
-   <properties>
-    <property name="down" value="true"/>
-   </properties>
-  </tile>
-  <tile id="17">
-   <properties>
-    <property name="down" value="true"/>
-   </properties>
-  </tile>
-  <tile id="18">
-   <properties>
-    <property name="down" value="true"/>
-   </properties>
-  </tile>
-  <tile id="19">
-   <properties>
-    <property name="down" value="true"/>
-   </properties>
-  </tile>
-  <tile id="20">
-   <properties>
-    <property name="down" value="true"/>
-   </properties>
-  </tile>
-  <tile id="21">
-   <properties>
-    <property name="down" value="true"/>
-   </properties>
-  </tile>
-  <tile id="22">
-   <properties>
-    <property name="down" value="true"/>
-   </properties>
-  </tile>
-  <tile id="23">
-   <properties>
-    <property name="down" value="true"/>
-   </properties>
-  </tile>
-  <tile id="24">
-   <properties>
-    <property name="down" value="true"/>
-   </properties>
-  </tile>
-  <tile id="25">
-   <properties>
-    <property name="down" value="true"/>
-   </properties>
-  </tile>
-  <tile id="26">
-   <properties>
-    <property name="down" value="true"/>
-   </properties>
-  </tile>
-  <tile id="27">
-   <properties>
-    <property name="down" value="true"/>
-   </properties>
-  </tile>
-  <tile id="28">
-   <properties>
-    <property name="down" value="true"/>
-   </properties>
-  </tile>
-  <tile id="29">
-   <properties>
-    <property name="down" value="true"/>
-   </properties>
-  </tile>
-  <tile id="30">
-   <properties>
-    <property name="down" value="true"/>
-   </properties>
-  </tile>
-  <tile id="31">
-   <properties>
-    <property name="down" value="true"/>
-   </properties>
-  </tile>
-  <tile id="32">
-   <properties>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="33">
-   <properties>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="34">
-   <properties>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="35">
-   <properties>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="36">
-   <properties>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="37">
-   <properties>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="38">
-   <properties>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="39">
-   <properties>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="40">
-   <properties>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="41">
-   <properties>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="42">
-   <properties>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="43">
-   <properties>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="44">
-   <properties>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="45">
-   <properties>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="46">
-   <properties>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="47">
-   <properties>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="48">
-   <properties>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="49">
-   <properties>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="50">
-   <properties>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="51">
-   <properties>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="52">
-   <properties>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="53">
-   <properties>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="54">
-   <properties>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="55">
-   <properties>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="56">
-   <properties>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="57">
-   <properties>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="58">
-   <properties>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="59">
-   <properties>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="60">
-   <properties>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="61">
-   <properties>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="62">
-   <properties>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="63">
-   <properties>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="64">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="65">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="66">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="67">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="68">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="69">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="70">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="71">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="72">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="73">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="74">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="75">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="76">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="77">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="78">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="79">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="80">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="81">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="82">
-   <properties>
-    <property name="right" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="83">
-   <properties>
-    <property name="right" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="84">
-   <properties>
-    <property name="right" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="85">
-   <properties>
-    <property name="right" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="86">
-   <properties>
-    <property name="right" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="87">
-   <properties>
-    <property name="right" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="88">
-   <properties>
-    <property name="right" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="89">
-   <properties>
-    <property name="right" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="90">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="91">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="92">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="93">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="94">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="95">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="96">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="97">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="left" value="true"/>
-   </properties>
-  </tile>
-  <tile id="98">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="99">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="100">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="101">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="102">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="103">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="104">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="105">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="106">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="107">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="108">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="109">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="110">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="111">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="112">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="113">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="114">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="left" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="115">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="left" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="116">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="left" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="117">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="left" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="118">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="right" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="119">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="right" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="120">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="right" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="121">
-   <properties>
-    <property name="down" value="true"/>
-    <property name="right" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="122">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="123">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="124">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="125">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="126">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="127">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="128">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="129">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="130">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="131">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="132">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="133">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="134">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="135">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="136">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="137">
-   <properties>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-   </properties>
-  </tile>
-  <tile id="138">
-   <properties>
-    <property name="blocked" value="true"/>
-    <property name="down" value="true"/>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
-  <tile id="139">
-   <properties>
-    <property name="blocked" value="true"/>
-    <property name="down" value="true"/>
-    <property name="left" value="true"/>
-    <property name="right" value="true"/>
-    <property name="top" value="true"/>
-   </properties>
-  </tile>
- </tileset>
- <tileset firstgid="141" name="normal_map" tilewidth="100" tileheight="75" tilecount="160">
+ <tileset firstgid="1" name="normal_map" tilewidth="100" tileheight="75" tilecount="160">
   <image source="normal_map.png" width="1000" height="1200"/>
   <tile id="0">
    <properties>
@@ -1631,102 +830,102 @@
  </tileset>
  <layer name="Level1" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+NlZGB4y8DAcA+I76Lhn0B8Foh7gXgdEK9Fwl+hcjB5dDAXi/w+IN4LxPtxyMPsWI9DHhnMB+KrUPm/UHORMcwORkZMf4HwUyBmBcoBAJBKCcAAAQAA
+   H4sIAAAAAAAAC2tkYGBIBOIgIA5Ew7lA7AjEjECsBMSKSDgTKgeTRweCWOSNgNgQiI1xyMPsUMYhjwyEgdgTKl8INRcZw+woxeIvEI4E4kogBgBwX6T5AAEAAA==
   </data>
  </layer>
  <layer name="Level2" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC/vIwMBwH4jXIuGvQPwWSp8H4g8MEDAPiPuAmJ2RgaEXSM9lgNAHoPLzgbgfiNcBsSwjQn4DVH4fEO9nQACQ/DmomQxQfeuh6tiA+i8C6bNA/BdNH0jdNyC+CsQToW5ez4AJ5kL1gsz6B6T3orFZgWwAX3DP6AABAAA=
+   H4sIAAAAAAAAC0tlYGAIBmJFJJwJxIlQ2hmIUxggQAiImYC4GogZgVgQSptA5YWBmBmIlYB4IpK8ClTeCIiNGRAAJO8ENZMBqk8Zqq4KiF2B2BGIC9H0gdRlAbEnELNC3azMgAkEoXpBZhUBsSEauxKIAcdVTM8AAQAA
   </data>
  </layer>
  <layer name="Level3" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC23NzQpFUBSG4WXi5ypcsRid2eEKuAPkEhTJRDEnoxPFyVvWYCe7nlbtb/3MIpK+GLAjQIwGkdyvwIFWc8e6q5mF+Go+oYJP36aZGHmGn/EverM37v9hM/+hlo/5BIvu6LDCpbemnshfjPDouQCppaPzAAEAAA==
+   H4sIAAAAAAAAC23NPQqDAAyG4YhObuoJ7A1UPIKgiItQd8WpVFBHf07RC/cFMwQx8BDIR5JeROIHLSY4CFHCk6tSzKg037XbzEWg8w45fvhqJiZ/4WPmoj8b83/FBh/ZbT/CoDdqjDhQYEHy4I0Tf8ORn8IAAQAA
   </data>
  </layer>
  <layer name="Level4" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC/vIwMBwH4jXYsFfgfgsEEswMoDBPCDuQ6LnAvF5IP4AkQbz/wIxK1B9L5Tfy4AAIH3voGbLMiLUszFCzEMG+4B4KRC/BeJvQNyPJifFCHFbLwMmWAfEP4D4KtT8vVAMsucfEh/kTgDME5dWAAEAAA==
+   H4sIAAAAAAAAC0tlYGAIBmJFLDgTiB2BuIcBAoSAmAmJFgRiZyBOgcqD+IVAXAnEjFA+IwMCgPQlQc2eiKS+CmoeMjACYkkgTgTiLCBmRpPrg7qNkQETKAFxDhB7Qs03hGKQPUVIfJA7AceTln4AAQAA
   </data>
  </layer>
  <layer name="Level5" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC/vIwMBwH4g3AvFaJPwAiL8CcS8QfwfiqUC8nwEBNgAxOyNEHkSfBdLvgXgeSJIRouY7kv7zQNwPxPOB+APUjLkMCP29UL19QKwA5O8F0qyMCP29UPX/oWa8Q3IfTP8JIF6P5EaQ+r9A/BCIDwLxSwaIuTAMMh8A4SpA0QABAAA=
+   H4sIAAAAAAAAC03OPQ5AQBCG4V0qJU4gOICITiOOgFLjpxCV0IhrOLBXMmI2ebLFfN9kZmNMgxSR0mKBxQoPuflfgkvm719hRIBDMqvq13ARYpK5r/pWug5uZDhV30p+lx2Duu/rl4jVjW9+Q4cCvezN1P4Hpbg3EQABAAA=
   </data>
  </layer>
  <layer name="Level6" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC3vLwMBwD4g3AvFaNPwViHuB+DuUBoF9QLwfyp4LFWdnZGD4DxX7AcQf0OTXAfF6qJgCI8IMmDwyAIm9haoHsc8B8T8gZgPqY2BE1QNiT4S69RvUXpDYX6j6i1D2XiR8FIjvQjEnUA0AQmSkqgABAAA=
+   H4sIAAAAAAAAC0tkYGAIAmJVIFZEw5lAzAjE2VAaBIyA2BjKFoSKVwNxMVQsB4hT0OSVgFgZKjYFyQyYPDIAiSVC1YPYTkBcBMRVQFyCpgfEZoW6NQtqL0isEKreFco2RMKWQBwIxbVADABCb5dmAAEAAA==
   </data>
  </layer>
  <layer name="Level7" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC3XMQQ5AMBQE0PkL1m7AhekJcAKcACcSNlgR89M2bZpo8tLF/JkNwPDjpJoWygVo+Hf00kqty0e6yFBPO01RXom990/3Sgm5do4ov92Wz+E2ZljaRZLrRiGWQcgfhF4q4+0HCmMcQQABAAA=
+   H4sIAAAAAAAAC3XMQQ5AMBBG4aEnwAlwApxI2GDFjrUb1IG9SabJRKLJt+lr/1FE6h8LMvS4kKPEgQGF9QYrAipMaF1/7H06uhdd1z+z65ttpS620Zlod77rxm2C67v793XiBR9G0HcAAQAA
   </data>
  </layer>
  <layer name="Level8" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC3vLwMCwFgf+CsS9QDwPiPsYEADGnwuVZ2dkYJgGpPdC8VIg/o8kvw2IOYFq3kLNZASyNyPJzwfid0AsCxSXA+JvQHY/kjwIKDAizJdnhIghy8PMgOmFyf9Fchc6ZgWaAwCxXA2CAAEAAA==
+   H4sIAAAAAAAAC0tkYGBQxIEzgZgRiIWAmIkBAWB8Qah8NRBzAbEhFEsCcTGSvBYQ1wJxItTMUiBWR5IXBuIkIJ4IxJOAOAuImZHkQWAKkvmToWLI8jAzYHph8oVI+tBxJRADAIqarcoAAQAA
   </data>
  </layer>
  <layer name="Level9" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC3vLwMCwFgf+CsS9DBCwAIgnADEHIwNDH1RsLhCfAzEYGeDgBxD3I8mfB+IPDKgAZAZIz1wk85HBD6geZHmYHhDYB8T70eTXAfF6NDZI/i8Q74ViNqD+f0g0K5AGANofci4AAQAA
+   H4sIAAAAAAAAC0tkYGBQxIEzgZiRAQJEgJgFiGuAmAkqJgjETkBcwoAAOUDMjCTvDMQpDKigBqpHEMl8ZJAD1YMsD9MDAkZAbIwmrwTEymhskHwhEBtCcRUQFyHRlUAMAHE+O3cAAQAA
   </data>
  </layer>
  <layer name="Level10" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC3vLwMDwAIjXomGQ2Fcg7gXiDUDMwQgkQBgKQGLsjBB5EPgOxB8YUAFI7D8QzwPiPiQaZtZcIPUeiOcDcT8S/R0qPpcBYT6y/TB1yPLY7AfJ/wXivTgwK9A8ABqN4qYAAQAA
+   H4sIAAAAAAAAC0tkYGAIAWJFNAwSywRiRiBWAeIaIC5hQACQWDVUHgSygTiFARWAxIqBWAiImZBomFmCQJwMxMJAzIxEZ0PFBZHMR7Yfpg5ZHpv9IPlCIDbEgSuBGABrzWLFAAEAAA==
   </data>
  </layer>
  <layer name="Level11" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC3vLwMCwFgf+CsS9DBCwAIinAfFeKJZnZGCYC5U/AFUzH4jfAfE3qDhMfisQ72fABHOR1L2HmqPAiFCLLP8fiDdA2RKMqPJyQP56JDd8QNL/F8nN6JgVqA8AgP7+jgABAAA=
+   H4sIAAAAAAAAC0tkYGBQxIEzgZiRAQJEgJgLiA2heDIQC0LlTaBqhIE4CYizoOIweU0gNmbABIJI6pKh5kxBUossXwzEKlB2D5r8JCBWRnJDCpJ8IZKb0XElEAMAP4iZKwABAAA=
   </data>
  </layer>
  <layer name="Level12" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC3vLwMCwFgnfA+L7UPZXIO4FYgVGBoa9QHo/EK8D4vUMEMDOCJGfC8RvkcT3QdV+h+qfD8T9DAgAMuMZELNC9R9A0scGFOuDqoHZvwFJH8hdh4BYnhFiL0ieA6oHBn4A8QSou/4C8UMgPsgA8QMyBtkPAINrmbIAAQAA
+   H4sIAAAAAAAAC0tkYGBQRMJBQBwMZWcCMSMQTwFiQyA2BmIlIFZmgIBqqLwgECciiRtB1WZD5YWBmJkBAUBmRAFxJVTeBElfFRAzQdXA7FdB0gdylxkQT4baC5KvgeqBgRwgZoHKFwJxKBCbQv2AjEH2AwBQaORAAAEAAA==
   </data>
  </layer>
  <layer name="Level13" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC/vIwMBwH4jXouG7QPwTiM8D8Rcg3s8AAfug7O9AfBaIe4F4PhB/gMr/gLJBYleB+AIQT2DADuZC9cMAByMDQx+QngfiMELkz0HZILAOiGUZEfbNhboPZjfMbcjm/wXivVD8EIifIvFZgWYBAK3ykW4AAQAA
+   H4sIAAAAAAAAC0tlYGAIBmJFNBwIxLlA7AzEGUBszAABRlB2NhA7AjEjEAsDcQpUPgfKBol5ArELELMwYAeCUP0wUAPETEAsBMQlUHknKBsElIB4IpJ9glD3weyGuQ3Z/EIgNoTiUCCOROJXAjEA3o3HYgABAAA=
   </data>
  </layer>
  <layer name="Level14" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC3vLwMBwD4jvAvF9IF4LxQ+A+CsQ9wLxNqg8CO9ngIANQDwXKg+i30L1PUNSAxI/B8SXgbgfKvYDiD8gyZ8F4v8MqICDkYGhDyp/HqpegRFh7g+oeTD7QWA+krkgMA+IbwLxXyDei4bZGCF2sgJpABjBKEMAAQAA
+   H4sIAAAAAAAAC0tkYGAIAuJAIA4GYkUoDgHiTCBmBGItqDwIGzNAgAoQC0LlQXQiVF8UkhqQuBMQuwMxM1QsB4hTkOQdgbiYARXUADETVN4Zqn4Kkrk5UPNg9oOAMJK5ICAExL5AXAjEhmi4CmpnJRADAJfqJKAAAQAA
   </data>
  </layer>
  <layer name="Level15" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC3vLwMDwDYg/APFaKIbxvwJxLwNuMBeIzwHxPyDejyS+D4jZGBkYLgLpiVAz1wPxAiCeAMTroGILiTAfJD8PasdeKAaZ3YckPx+I36G5vx8q/xdJHzpmBZoDAAjm6hoAAQAA
+   H4sIAAAAAAAAC0tkYGDIAuIUIFaEYhg/E4gZGXADQSB2AuIiIDZGEjcC4iogdgViVqiZykAsAsQsQKwEFRMlwnyQvBDUDkMoBpnNhCQvDMRJaO5nhsoXIulDx5VADADqoo6qAAEAAA==
   </data>
  </layer>
  <layer name="Level16" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+NlZGB4y8DAsBaI7wHxfSgbhL8C8Vkg/s+AHcwF4vNA/AFNXAFo5n6ofC+SOAdQnIERIv4WKj+VAaIWBNYB8Xqo+H8ofRaqFhnMg9oJs78fKtaHxX1/gXgvELMyIth7kcQAOOS4+wABAAA=
+   H4sIAAAAAAAAC2tkYGBIBGJFIA4C4mAoG4QzgdgRiIsZsANBIHYG4hQ08SlAbAyVZ0QSrwHiEqh4IpTmhKoFASUgVoaKF0NpR6haZCAEtRNmPzNUjAmL+wqB2BCIK5HYhkhiAIxAT0wAAQAA
   </data>
  </layer>
  <layer name="Level17" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC13OyQmAMBCF4fGg2LxLA4INRCvQDlyuXrQCwYvgxeUfTCA68CUkA29mFRHzM2PBjhE54oBDUQc2FEjeL6lQy7e03yO17xaRl6P9DreXYWxOiQmDneVK93B5/nxXulvm9U878+JufkL+H3r38UAAAQAA
+   H4sIAAAAAAAAC0tkYGBQRMNBQBwMxJlA7ALELEBcA8QlDBCQA8QpQCwIxIxQMSUgVmZABSB5JyBmgvKNgLgKyRyQvCMQFyOZoQg1RwSIfYHYGWoXDNQgmYdsPwyA3MaMJF8ItbMIiA3RcCUQAwD9NRiuAAEAAA==
   </data>
  </layer>
  <layer name="Level18" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC3vLwMDwAIi/AfE7JHotEH8F4l4g3gHE+xkwwVwgngrEbIwMDO+RxOeBCEaI/HmoeTBwAIjnQ8XmQs0HAQVGiB0b0MyHybOj2QGTvwDEE4D4BxD3Q8U5GBH2/wXivWj4IRA/BWJWoBoAMTvaggABAAA=
+   H4sIAAAAAAAAC0tkYGAIAeIsIE5CohWBOBOIGYFYB4iNGTCBIBBzAnEVECcjiQsBcQlU3hlqHgyYALEwVEwQaj4ITIHaoYJmPky+Gs0OmLwLELMAcQ4QM0PFa5DsLwRiQzQcCsSRQFwJxABWc+I2AAEAAA==
   </data>
  </layer>
  <layer name="Level19" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC3vLwMCwFgf+CsS9QDwPiPuAmIMRQsP4c6Hy84G4H4i/Q/kg8f9INAzA1MkBzVkPpNmB9Huo3D4g3s+ACr4j6QexkdXKM0LMh4mBzIKp/QG1ByT/F4j3AvFDIH4KZcMwK1APAJWa7L4AAQAA
+   H4sIAAAAAAAAC0tkYGBQxIEzgZgRiIWAmAmIa6A0jC8IlRcGYmYgzobyQeLFSDQMwNRNAmJlIK4G4mSonBEQGzOggmwk/dloaidDzYeJVSOpzYHaA5IvBGJDIA4F4kgoG4YrgRgA4uPbXgABAAA=
   </data>
  </layer>
  <layer name="Level20" width="8" height="8">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC23NQQ5EMBSA4deFcYu5sZgL4AQ4AbOctYQtcQCxGlbC3/QtXkSTLy/1a7uISHkzYsIfCVq8nEjP/GDHikx7hQ2phOW/n6bb5e/6oTa9Nb3SJqb79w58kfvgwuy0x+wXPfd2YRYY9NyM5kHEvxdn7lKFAAEAAA==
+   H4sIAAAAAAAAC0tkYGBQRMNBQBwMxJlAzAjERkBcBcQeQMwCxNlAnAzEglB5JSDOAmJmBggAiRcjySMDkFnWQKyMJG+EJK8ElWNAkgfZVwjExkAsBMQlUNoVKl8NxIlQfZOgtDAQe0L1hQKxIRZcCcQASwd75gABAAA=
   </data>
  </layer>
 </map>
