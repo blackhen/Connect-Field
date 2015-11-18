@@ -850,7 +850,7 @@
  </layer>
  <layer name="Level5" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC03OPQ5AQBCG4V0qJU4gOICITiOOgFLjpxCV0IhrOLBXMmI2ebLFfN9kZmNMgxSR0mKBxQoPuflfgkvm719hRIBDMqvq13ARYpK5r/pWug5uZDhV30p+lx2Duu/rl4jVjW9+Q4cCvezN1P4Hpbg3EQABAAA=
+   H4sIAAAAAAAAC03OPQ5AQBCG4V0qJU4gOICITiNuIJQKP42ohEZcw4G9khGzyZMt5vsmMxhjGqSIlBYLLFZ4yM3/Elwyf/8KEwIckllVv4aLELPMfdW30nVwI8Op+lbyu+wY1X1fv0SsbnzzGzoU6GVvpvY/aIvhnAABAAA=
   </data>
  </layer>
  <layer name="Level6" width="8" height="8" visible="0">
@@ -860,12 +860,12 @@
  </layer>
  <layer name="Level7" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC3XMQQ5AMBBG4aEnwAlwApxI2GDFjrUb1IG9SabJRKLJt+lr/1FE6h8LMvS4kKPEgQGF9QYrAipMaF1/7H06uhdd1z+z65ttpS620Zlod77rxm2C67v793XiBR9G0HcAAQAA
+   H4sIAAAAAAAAC3XMQQ5AMBBG4aEnwAlwApyI2GDFjrUb1IG9SabJRKLJt+lr/1FE6h8LMvS4kKPEgQGF9QYrAipMaF1/7H06uhdd1z+z65ttpS620Zlod77rxm2C67v793XiBbMSSocAAQAA
   </data>
  </layer>
  <layer name="Level8" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC0tkYGBQxIEzgZgRiIWAmIkBAWB8Qah8NRBzAbEhFEsCcTGSvBYQ1wJxItTMUiBWR5IXBuIkIJ4IxJOAOAuImZHkQWAKkvmToWLI8jAzYHph8oVI+tBxJRADAIqarcoAAQAA
+   H4sIAAAAAAAAC0tkYGBQxIEzgZgRiIWAmIkBAWB8Qah8NRBzArEhFEsCcTGSvBYQ1wJxItTMUiBWR5IXBuIkIJ4IxJOAOAuImZHkQWAKkvmToWLI8jAzYHph8oVI+tBxJRADAEQJ8Q8AAQAA
   </data>
  </layer>
  <layer name="Level9" width="8" height="8" visible="0">
@@ -885,7 +885,7 @@
  </layer>
  <layer name="Level12" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC0tkYGBQRMJBQBwMZWcCMSMQTwFiQyA2BmIlIFZmgIBqqLwgECciiRtB1WZD5YWBmJkBAUBmRAFxJVTeBElfFRAzQdXA7FdB0gdylxkQT4baC5KvgeqBgRwgZoHKFwJxKBCbQv2AjEH2AwBQaORAAAEAAA==
+   H4sIAAAAAAAAC0tkYGBQRMJBQBwMZWcCMSMQTwFiQyA2BmIlIFZmgIBqqLwgECciiRtB1WZD5YWBmJkBAUBmRAFxJVTeBElfFRAzQdXA7FdB0gdylxkQT4baC5KvgeqBgRyofSD5QiAOBWJTqB+QMch+AAeb2boAAQAA
   </data>
  </layer>
  <layer name="Level13" width="8" height="8" visible="0">
@@ -905,7 +905,7 @@
  </layer>
  <layer name="Level16" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2tkYGBIBGJFIA4C4mAoG4QzgdgRiIsZsANBIHYG4hQ08SlAbAyVZ0QSrwHiEqh4IpTmhKoFASUgVoaKF0NpR6haZCAEtRNmPzNUjAmL+wqB2BCIK5HYhkhiAIxAT0wAAQAA
+   H4sIAAAAAAAAC2tkYGBIBGJFIA4C4mAoG4QzgdgRiIsZIEAJiJUZEEAQiJ2BOIUBFUwBYmOoPCOSeA0Ql0DFE6E0J1QtsvmCUDsFofYnopkvBLUTZj8zVIwJTR1IvhCIDYG4EoltiCQGAEk3KsYAAQAA
   </data>
  </layer>
  <layer name="Level17" width="8" height="8" visible="0">
@@ -915,7 +915,7 @@
  </layer>
  <layer name="Level18" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC0tkYGAIAeIsIE5CohWBOBOIGYFYB4iNGTCBIBBzAnEVECcjiQsBcQlU3hlqHgyYALEwVEwQaj4ITIHaoYJmPky+Gs0OmLwLELMAcQ4QM0PFa5DsLwRiQzQcCsSRQFwJxABWc+I2AAEAAA==
+   H4sIAAAAAAAAC0tkYGAIAeIsIE5CohWBOBOIGYFYB4iNGTCBIBBzAnEVECcjiQsBcQlU3hlq3kSonAkQC0PFBKHmg8AUqB0qaObD5KvR7IDJuwAxCxDnADEzVLwGyf5CIDZEw6FAHAnElUAMANxFubMAAQAA
   </data>
  </layer>
  <layer name="Level19" width="8" height="8" visible="0">
@@ -923,9 +923,9 @@
    H4sIAAAAAAAAC0tkYGBQxIEzgZgRiIWAmAmIa6A0jC8IlRcGYmYgzobyQeLFSDQMwNRNAmJlIK4G4mSonBEQGzOggmwk/dloaidDzYeJVSOpzYHaA5IvBGJDIA4F4kgoG4YrgRgA4uPbXgABAAA=
   </data>
  </layer>
- <layer name="Level20" width="8" height="8">
+ <layer name="Level20" width="8" height="8" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC0tkYGBQRMNBQBwMxJlAzAjERkBcBcQeQMwCxNlAnAzEglB5JSDOAmJmBggAiRcjySMDkFnWQKyMJG+EJK8ElWNAkgfZVwjExkAsBMQlUNoVKl8NxIlQfZOgtDAQe0L1hQKxIRZcCcQASwd75gABAAA=
+   H4sIAAAAAAAAC13NQQpAQBSA4ScugBPgBMjKWrElB5AVVmKDW3Bh/+QtJq++Xs3fzAwiEv206DDBQYYTNTwsGOFrjzHDlW/M+WZ1e8xbJRKrm7NHe6xNrG7+W5EjwK670n5h0Hu37hCN3utRIP058AItQPx0AAEAAA==
   </data>
  </layer>
 </map>
